@@ -26,33 +26,33 @@
     // Public function for external calls
     //----------------------
 
-    const AXML_FILE = 0x00080003;
-    const STRING_BLOCK = 0x001C0001;
-    const RESOURCEIDS = 0x00080180;
+    const AXML_FILE       = 0x00080003;
+    const STRING_BLOCK    = 0x001C0001;
+    const RESOURCEIDS     = 0x00080180;
     const START_NAMESPACE = 0x00100100;
-    const END_NAMESPACE = 0x00100101;
-    const START_TAG = 0x00100102;
-    const END_TAG = 0x00100103;
-    const TEXT = 0x00100104;
-    const TYPE_NULL = 0;
-    const TYPE_REFERENCE = 1;
+    const END_NAMESPACE   = 0x00100101;
+    const START_TAG       = 0x00100102;
+    const END_TAG         = 0x00100103;
+    const TEXT            = 0x00100104;
+    const TYPE_NULL       = 0;
+    const TYPE_REFERENCE  = 1;
 
     //----------------------
     // Type constant definitions
     //----------------------
-    const TYPE_ATTRIBUTE = 2;
-    const TYPE_STRING = 3;
-    const TYPE_FLOAT = 4;
-    const TYPE_DIMENSION = 5;
-    const TYPE_FRACTION = 6;
-    const TYPE_INT_DEC = 16;
-    const TYPE_INT_HEX = 17;
-    const TYPE_INT_BOOLEAN = 18;
+    const TYPE_ATTRIBUTE       = 2;
+    const TYPE_STRING          = 3;
+    const TYPE_FLOAT           = 4;
+    const TYPE_DIMENSION       = 5;
+    const TYPE_FRACTION        = 6;
+    const TYPE_INT_DEC         = 16;
+    const TYPE_INT_HEX         = 17;
+    const TYPE_INT_BOOLEAN     = 18;
     const TYPE_INT_COLOR_ARGB8 = 28;
-    const TYPE_INT_COLOR_RGB8 = 29;
+    const TYPE_INT_COLOR_RGB8  = 29;
     const TYPE_INT_COLOR_ARGB4 = 30;
-    const TYPE_INT_COLOR_RGB4 = 31;
-    const UNIT_MASK = 15;
+    const TYPE_INT_COLOR_RGB4  = 31;
+    const UNIT_MASK            = 15;
     private static $RADIX_MULTS = [0.00390625, 3.051758E-005, 1.192093E-007, 4.656613E-010];
     private static $DIMENSION_UNITS = ["px", "dip", "sp", "pt", "in", "mm", "", ""];
     private static $FRACTION_UNITS = ["%", "%p", "", "", "", "", "", ""];
@@ -69,7 +69,8 @@
     private $line = 0;
 
 
-    public function open($apk_file, $xml_file = 'AndroidManifest.xml') {
+    public
+    function open($apk_file, $xml_file = 'AndroidManifest.xml') {
       $zip = new ZipArchive();
       if ($zip->open($apk_file) !== true) return false;
       $xml = $zip->getFromName($xml_file);
@@ -84,7 +85,8 @@
     }
 
 
-    public function parseString($xml) {
+    public
+    function parseString($xml) {
       $this->xml = $xml;
       $this->length = strlen($xml);
 
@@ -93,7 +95,8 @@
       return true;
     }
 
-    private function parseBlock($need = 0) {
+    private
+    function parseBlock($need = 0) {
       $o = 0;
       $type = $this->get32($o);
       if ($need && $type != $need) throw new Exception('Block Type Error', 1);
@@ -239,19 +242,22 @@
         $props['child'] = $child;
 
         return $props;
-      } else {
+      }
+      else {
         return false;
       }
     }
 
-    private function get32(&$off) {
+    private
+    function get32(&$off) {
       $int = unpack('V', substr($this->xml, $off, 4));
       $off += 4;
 
       return array_shift($int);
     }
 
-    private function get32array(&$off, $size) {
+    private
+    function get32array(&$off, $size) {
       if ($size <= 0) return null;
       $arr = unpack('V*', substr($this->xml, $off, 4 * $size));
       if (count($arr) != $size) throw new Exception('Array Size Error', 10);
@@ -260,7 +266,8 @@
       return $arr;
     }
 
-    private function getStringTab($base, $list) {
+    private
+    function getStringTab($base, $list) {
       $tab = [];
       foreach ($list as $off) {
         $off += $base;
@@ -270,7 +277,8 @@
         if ($len == $mask) {
           if ($off + $len > $this->length) throw new Exception('String Table Overflow', 11);
           $tab[] = substr($this->xml, $off, $len);
-        } else {
+        }
+        else {
           if ($off + $len * 2 > $this->length) throw new Exception('String Table Overflow', 11);
           $str = substr($this->xml, $off, $len * 2);
           $tab[] = mb_convert_encoding($str, 'UTF-8', 'UCS-2LE');
@@ -280,14 +288,16 @@
       return $tab;
     }
 
-    private function get16(&$off) {
+    private
+    function get16(&$off) {
       $int = unpack('v', substr($this->xml, $off, 2));
       $off += 2;
 
       return array_shift($int);
     }
 
-    private function getNameSpace($uri) {
+    private
+    function getNameSpace($uri) {
       for ($i = count($this->ns); $i > 0;) {
         $ns = $this->ns[ --$i ];
         if (isset($ns[ $uri ])) {
@@ -301,15 +311,18 @@
       return '';
     }
 
-    private function getString($id) {
+    private
+    function getString($id) {
       if ($id > -1 && $id < $this->stringCount) {
         return $this->stringTab[ $id ];
-      } else {
+      }
+      else {
         return '';
       }
     }
 
-    private function getAttributeValue($a) {
+    private
+    function getAttributeValue($a) {
       $type = &$a['val_type'];
       $data = &$a['val_data'];
       switch ($type) {
@@ -346,31 +359,37 @@
     // Internal private function
     //----------------------
 
-    private static function _getPackage($data) {
+    private static
+    function _getPackage($data) {
       return ($data >> 24 == 1) ? 'android:' : '';
     }
 
-    private function _complexToFloat($data) {
+    private
+    function _complexToFloat($data) {
       return (float)($data & 0xFFFFFF00) * self::$RADIX_MULTS[ ($data >> 4) & 3 ];
     }
 
-    private function _int2float($v) {
+    private
+    function _int2float($v) {
       $x = ($v & ((1 << 23) - 1)) + (1 << 23) * ($v >> 31 | 1);
       $exp = ($v >> 23 & 0xFF) - 127;
 
       return $x * pow(2, $exp - 23);
     }
 
-    private function skip($size) {
+    private
+    function skip($size) {
       $this->xml = substr($this->xml, $size);
       $this->length -= $size;
     }
 
-    public function getPackage() {
+    public
+    function getPackage() {
       return $this->getAttribute('manifest', 'package');
     }
 
-    public function getAttribute($path, $name) {
+    public
+    function getAttribute($path, $name) {
       $r = $this->getElement($path);
       if (is_null($r)) return null;
 
@@ -388,7 +407,8 @@
      *
      * @return null
      */
-    private function getElement($path) {
+    private
+    function getElement($path) {
       if (!$this->root) return null;
       $ps = explode('/', $path);
       $r = $this->root;
@@ -396,7 +416,8 @@
         if (preg_match('/([^\[]+)\[([0-9]+)\]$/', $v, $ms)) {
           $v = $ms[1];
           $off = $ms[2];
-        } else {
+        }
+        else {
           $off = 0;
         }
         foreach ($r['child'] as $c) {
@@ -404,7 +425,8 @@
             if ($off == 0) {
               $r = $c;
               continue 2;
-            } else {
+            }
+            else {
               $off--;
             }
           }
@@ -426,7 +448,8 @@
      *
      * @return string
      */
-    public function getXML($node = null, $lv = -1) {
+    public
+    function getXML($node = null, $lv = -1) {
       $xml = "";
 
       if ($lv == -1) $node = $this->root;
@@ -449,20 +472,24 @@
     //--------------------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------------------
 
-    public function getAppName() {
+    public
+    function getAppName() {
       return $this->getAttribute('manifest/application', 'android:name');
     }
 
-    public function getVersionName() {
+    public
+    function getVersionName() {
       return $this->getAttribute('manifest', 'android:versionName');
     }
 
 
-    public function getVersionCode() {
+    public
+    function getVersionCode() {
       return $this->getAttribute('manifest', 'android:versionCode');
     }
 
-    public function getUsesPermissions() {
+    public
+    function getUsesPermissions() {
       $collection = [];
       for ($i = 0; true; $i += 1) {
         $item = $this->getAttribute("manifest/uses-permission[{$i}]", 'android:name');
@@ -473,7 +500,8 @@
       return $collection;
     }
 
-    public function getUsesFeature() {
+    public
+    function getUsesFeature() {
       $collection = [];
       for ($i = 0; true; $i += 1) {
         $item_name = $this->getAttribute("manifest/uses-feature[{$i}]", 'android:name');
@@ -489,15 +517,18 @@
     }
 
 
-    public function getUsesSDKMin() {
+    public
+    function getUsesSDKMin() {
       return $this->getAttribute('manifest/uses-sdk', 'android:minSdkVersion');
     }
 
-    public function getUsesSDKTarget() {
+    public
+    function getUsesSDKTarget() {
       return $this->getAttribute('manifest/uses-sdk', 'android:targetSdkVersion');
     }
 
-    public function getApplicationMetaData() {
+    public
+    function getApplicationMetaData() {
       $collection = [];
       for ($i = 0; true; $i += 1) {
         $item_name = $this->getAttribute("manifest/application/meta-data[{$i}]", 'android:name');
@@ -510,24 +541,6 @@
       }
 
       return $collection;
-    }
-
-
-    public function getMainActivity() {
-      for ($id = 0; true; $id++) {
-        $act = $this->getAttribute("manifest/application/activity[{$id}]/intent-filter/action", 'android:name');
-        var_dump($act);
-        if (!$act) break;
-        if ($act == 'android.intent.action.MAIN') return $this->getActivity($id);
-      }
-
-      return null;
-    }
-
-    public function getActivity($idx = 0) {
-      $idx = intval($idx);
-
-      return $this->getAttribute("manifest/application/activity[{$idx}]", 'android:name');
     }
 
 
