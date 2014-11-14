@@ -260,6 +260,8 @@ Page Output:
 	  </application>
 	</manifest>
 
+
+
 ###Example #2
 Outputs Some Isolated Information From The XML.
 
@@ -271,15 +273,83 @@ Outputs Some Isolated Information From The XML.
 	  require_once("./ApkParser.php");
 
 	  $parser = new ApkParser();
-	  $parser->open('./com.google.android.youtube-5.17.6-51706300-minAPI15.apk');
+	  $parser->open('./resources/com.google.android.youtube-5.17.6-51706300-minAPI15.apk');
 
-	  $xml = $parser->getXML();
+	  echo
+	  'Version Name', "\t", $parser->getVersionName(), "\n",
+	  'Version Code', "\t", $parser->getVersionCode(), "\n",
+	  'Package Name', "\t", $parser->getPackage(), "\n",
+	  'SDK Minimal-Version Support', "\t", $parser->getUsesSDKMin(), "\n",
+	  'SDK Target-Version', "\t", $parser->getUsesSDKTarget(), "\n";
 
-	  echo $xml;
+	  echo "\n";
+
+	  echo 'Application Meta-Data', "\t";
+	  print_r($parser->getApplicationMetaData());
+	  echo "\n";
+
+	  echo "\n";
+
+	  echo 'Permissions', "\t";
+	  print_r($parser->getUsesPermissions());
+	  echo "\n";
+
+	  echo 'Hardware-Features', "\t";
+	  print_r($parser->getUsesFeature());
+	  echo "\n";
+
+
+Page Output:
 
 
 
+	Version Name	5.17.6
+	Version Code	51706300
+	Package Name	com.google.android.youtube
+	SDK Minimal-Version Support	15
+	SDK Target-Version	19
 
+	Application Meta-Data	Array
+	(
+		[to.dualscreen] => true
+		[com.google.android.apps.youtube.config.BuildType] => RELEASE
+		[android.app.default_searchable] => com.google.android.apps.youtube.app.honeycomb.Shell$ResultsActivity
+		[com.google.android.gms.version] => @7F0C0002
+	)
+
+
+	Permissions	Array
+	(
+		[0] => android.permission.INTERNET
+		[1] => android.permission.ACCESS_NETWORK_STATE
+		[2] => android.permission.CHANGE_NETWORK_STATE
+		[3] => android.permission.ACCESS_WIFI_STATE
+		[4] => android.permission.WRITE_EXTERNAL_STORAGE
+		[5] => android.permission.RECEIVE_BOOT_COMPLETED
+		[6] => android.permission.MANAGE_DOCUMENTS
+		[7] => android.permission.GET_ACCOUNTS
+		[8] => android.permission.MANAGE_ACCOUNTS
+		[9] => android.permission.USE_CREDENTIALS
+		[10] => com.google.android.providers.gsf.permission.READ_GSERVICES
+		[11] => com.google.android.googleapps.permission.GOOGLE_AUTH
+		[12] => com.google.android.googleapps.permission.GOOGLE_AUTH.youtube
+		[13] => com.google.android.googleapps.permission.GOOGLE_AUTH.YouTubeUser
+		[14] => com.google.android.c2dm.permission.RECEIVE
+		[15] => android.permission.WAKE_LOCK
+		[16] => android.permission.NFC
+		[17] => android.permission.CAMERA
+		[18] => com.google.android.youtube.permission.C2D_MESSAGE
+	)
+
+	Hardware-Features	Array
+	(
+		[0] => Array
+			(
+				[name] => android.hardware.camera
+				[is_required] => false
+			)
+
+	)
 
 
 
