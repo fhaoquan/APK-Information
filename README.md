@@ -260,9 +260,24 @@ Page Output:
 	  </application>
 	</manifest>
 
+###Example #2
+Outputs Some Isolated Information From The XML,
+It Uses A XPath-Like Syntax.
 
-2. item
-3. item
+	<?php
+	  setlocale(LC_ALL, 'en_US.UTF-8');
+	  mb_internal_encoding('UTF-8');
+	  header('Content-Type: text/plain; charset=utf-8');
+
+	  require_once("./ApkParser.php");
+
+	  $parser = new ApkParser();
+	  $parser->open('./com.google.android.youtube-5.17.6-51706300-minAPI15.apk');
+
+	  $xml = $parser->getXML();
+
+	  echo $xml;
+
 
 
 
