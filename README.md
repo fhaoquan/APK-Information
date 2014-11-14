@@ -261,8 +261,7 @@ Page Output:
 	</manifest>
 
 ###Example #2
-Outputs Some Isolated Information From The XML,
-It Uses A XPath-Like Syntax.
+Outputs Some Isolated Information From The XML.
 
 	<?php
 	  setlocale(LC_ALL, 'en_US.UTF-8');
