@@ -18,12 +18,12 @@
 - All **HD Images** Used For Package **Icons**.
  - **Base64** Image
  - Image **Meta-Data**
-   - Width
-   - Height
-   - Color-Channels (RGB, CMYK)
-   - Bits For Each Color
-   - Mime-Type
-   - Base64 ISO Mime-Type Prefix (__to make things easier__)
+    - Width
+    - Height
+    - Color-Channels (RGB, CMYK)
+    - Bits For Each Color
+    - Mime-Type
+    - Base64 ISO Mime-Type Prefix (__to make things easier__)
 - APK Information
  -  **Time** Of Creation, Last Access, Last Modification.
  -  File **Size**.
