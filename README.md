@@ -1,5 +1,35 @@
+1st Thing You Got To Know Is That This Project Is A Part Of A 1-Man 1-Day Hackaton I'm Putting MySelf Through Every Month, This Month I've Started At Nov. 14 - Nov 15. (Saturday Fun), Listening An Endless Loop Of This Track:
+
+
 #A PHP APK Parser: 
-##- Get Data From Binary AndroidManifest.xml Binary Parser, APK Parser, Package Analysis, Package-Image/Icon Fetcher - In Pure PHP.
+- Parse **AndroidManifest.xml**
+  - Output Plain-Text XML.
+    <small>**Easily Parse** It With Any Of **_PHP's Simple XML / DOM-Parsers_**.</small>
+  - Get Specific Information From Package.
+    - **Package Version** (Human Readable Format).
+    - Package Version (Code Format).
+    - Package Unified/Fully Qualified **Name**.
+    - SDK Minimal-Support Version.
+    - SDK Target Version.
+    - Application's **Meta-Data**.
+    - Package **Permissions**.
+    - All Of The **Hardware-Features** Might Be Used Used And If They Are **Required**.
+  - Documention Enabled Easily Adding More Query-Like Methods, Quite Easily.
+- All **HD Images** Used For Package **Icons**.
+ - **Base64** Image
+ - Image **Meta-Data**
+   - Width
+   - Height
+   - Color-Channels (RGB, CMYK)
+   - Bits For Each Color
+   - Mime-Type
+   - Base64 ISO Mime-Type Prefix (__to make things easier__)
+- APK Information
+ -  **Time** Of Creation, Last Access, Last Modification.
+ -  File **Size**.
+ -  ZIP **Compression Rate**.
+
+- A JSON Format Output, That Can Be Written To Prevent Future Re-Parsing and I/O.
 
 <br/>
 ************************************
