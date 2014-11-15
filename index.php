@@ -7,6 +7,12 @@
   require_once("./ApkInfo.php");
 
 
+//  //one file:
+//  print_r(
+//    getApkFileInfo('./resources/info.staticfree.android.twentyfourhour_8.apk')
+//  );
+
+  //entire folder (but just right files):
   $files = files_in('./resources', '/.(apk|zip|tar|gzip)$/');
   foreach ($files as $file) {
     print_r(
