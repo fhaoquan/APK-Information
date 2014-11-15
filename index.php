@@ -6,18 +6,41 @@
 
   require_once("./ApkInfo.php");
 
+  //entire folder (but just right files):
+  $files = files_in('./resources', '/.(apk|zip|tar|gzip)$/');
 
-//  //one file:
+
+  //--------------------------------------------------------------------------------------------------------- single file example
 //  print_r(
 //    getApkFileInfo('./resources/info.staticfree.android.twentyfourhour_8.apk')
 //  );
 
-  //entire folder (but just right files):
-  $files = files_in('./resources', '/.(apk|zip|tar|gzip)$/');
+
+  //--------------------------------------------------------------------------------------------------------- whole folder example
+//  foreach ($files as $file)
+//    print_r(
+//      getApkFileInfo('./resources/' . $file)
+//    );
+
+
+  //--------------------------------------------------------------------------------------------------------- save I/O example
+
   foreach ($files as $file) {
-    print_r(
-      getApkFileInfo('./resources/' . $file)
-    );
+    $json_filename = './resources/' . $file . '.json';
+    $data = '';
+
+    if (@file_exists($json_filename)) {
+      echo "**>  FROM FILE :)  <**\n";
+      $data = @file_get_contents($json_filename);
+    }
+    else {
+      echo "**>  LOOKALIVE :)  <**\n";
+      $data = getApkFileInfo('./resources/' . $file);
+      $data = toJSON($data);
+      @file_put_contents($json_filename, $data); //cache.
+    }
+
+    $data = json_decode($data);
+
+    print_r($data);
   }
-
-

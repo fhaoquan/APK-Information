@@ -3,6 +3,13 @@
   require_once("./ApkParser.php");
   require_once("./ApkImage.php");
 
+  function toJSON($str) {
+    return json_encode(
+      $str,
+      JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_TAG | JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT
+    );
+  }
+
   function getApkFileInfo($fileFullPath) {
 
     //APK external (the APK file) information
