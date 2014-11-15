@@ -5,7 +5,8 @@ AndroidManifest.xml Binary Parser, APK Parser, Package Analysis, Icon Fetcher - 
 
 <br/><br/>
 
-`ApkParser.php`
+#ApkParser.php
+> Modified From [https://github.com/polaris1119/myutility/blob/master/php/apk_parser.php](https://github.com/polaris1119/myutility/blob/master/php/apk_parser.php "https://github.com/polaris1119/myutility/blob/master/php/apk_parser.php")
 
 <br/>
 
@@ -353,7 +354,6 @@ Page Output:
 
 
 
-> Forked from [https://github.com/polaris1119/myutility/blob/master/php/apk_parser.php](https://github.com/polaris1119/myutility/blob/master/php/apk_parser.php "https://github.com/polaris1119/myutility/blob/master/php/apk_parser.php")
 
 
 
