@@ -6,8 +6,12 @@
 
   require_once("./ApkInfo.php");
 
-  //$files = files_in('./resources/.', '/.(apk|zip|tar|gzip)$/');
 
-  $info = getApkFileInfo('./resources/920 Text Editor 12.11.23_39.apk');
+  $files = files_in('./resources', '/.(apk|zip|tar|gzip)$/');
+  foreach ($files as $file) {
+    print_r(
+      getApkFileInfo('./resources/' . $file)
+    );
+  }
 
-  print_r($info);
+

@@ -83,6 +83,14 @@
     const TYPE_INT_COLOR_RGB4  = 31;
     const UNIT_MASK            = 15;
     public static $dictionary = [
+      "com.android.vending.CHECK_LICENSE"           => [
+        "description" => "Android Licensing Permission: Uses Google Play application for sending a license check, also known as License Verification Library (LVL).",
+        "when_added"  => "API level 3"
+      ],
+      "com.android.vending.BILLING"           => [
+        "description" => "Android In-app Billing requests and managing In-app Billing transactions using Google Play.",
+        "when_added"  => "API level 3"
+      ],
       "com.google.android.googleapps.permission.GOOGLE_AUTH.YouTubeUser"           => [
         "description" => "Allows apps to see the YouTube username(s) associated with the Google account(s) stored on this Android device.",
         "when_added"  => "API level UNKNOWN"
