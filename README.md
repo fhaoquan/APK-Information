@@ -1,7 +1,5 @@
-Google-Developer-Related
-========================
-
-AndroidManifest.xml Binary Parser, APK Parser, Package Analysis, Package-Image/Icon Fetcher - In Pure PHP.
+#A PHP APK Parser: 
+##- Get Data From Binary AndroidManifest.xml Binary Parser, APK Parser, Package Analysis, Package-Image/Icon Fetcher - In Pure PHP.
 
 <br/>
 ************************************
