@@ -1,7 +1,13 @@
 Google-Developer-Related
 ========================
 
-AndroidManifest.xml Binary Parser, APK Parser, Package Analysis, Icon Fetcher - Mostly PHP And JavaScript
+AndroidManifest.xml Binary Parser, APK Parser, Package Analysis, Package-Image/Icon Fetcher - In Pure PHP.
+
+<br/>
+************************************
+#### In My Examples Here I Am Using Official YouTube APK
+##### From [ApkMirror.com](http://www.apkmirror.com/apk/google-inc/youtube/youtube-5-17-6-2-apk/ "http://www.apkmirror.com/apk/google-inc/youtube/youtube-5-17-6-2-apk/"), It Provides A Very Rich XML To Work With.
+************************************
 
 <br/><br/>
 
@@ -13,21 +19,9 @@ AndroidManifest.xml Binary Parser, APK Parser, Package Analysis, Icon Fetcher - 
 ## For The _Binary-Compressed_ AndroidManifest.xml File
 ### Reads Directly From The APK File. **No Unzipping**, **Zero Hassle**.
 
-<br/>
-************************************
-#### In My Examples Here I Am Using Official YouTube APK
-##### From [ApkMirror.com](http://www.apkmirror.com/apk/google-inc/youtube/youtube-5-17-6-2-apk/ "http://www.apkmirror.com/apk/google-inc/youtube/youtube-5-17-6-2-apk/"), It Provides A Very Rich XML To Work With.
-************************************
-
-<br/>
 ************************************
 <br/>
 ************************************
-
-###Usage Instructions
-
-###Helpful Note:
-For Local-Developments Alway Use [WT-NMP - portable Nginx Mysql Php development stack for Windows](wtriple.com/wtnmp/ "wtriple.com/wtnmp/"), [WAMP](www.wampserver.com/en/ "www.wampserver.com/en/") Is $hit.
 
 ###Example #1 
 Parse Binary XML, Output Plain-Text (Beautified And Human-Readble XML)
