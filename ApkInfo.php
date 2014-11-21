@@ -5,11 +5,19 @@
 
   function toJSON($str, $isSmall = false) {
     return !$isSmall ?
-      json_encode($str,JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_TAG | JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
-      :json_encode($str);
+      json_encode($str, JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_TAG | JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
+      : json_encode($str);
   }
 
-  function getApkFileInfo($fileFullPath) {
+
+  /**
+   * @param       $fileFullPath
+   * @param bool  $is_dump_images_to_files   (default is false) if true, the images will be written to the OS, same path
+   *                                         of the APK,
+   *
+   * @return mixed
+   */
+  function getApkFileInfo($fileFullPath, $is_dump_images_to_files = false, $is_dump_json_data_to_json = false) {
 
     //APK external (the APK file) information
     $info = pathinfo($fileFullPath); //[dirname] => ./resources | [basename] => com.google.android.youtube-5.17.6-51706300-minAPI15.apk | [extension] => apk | [filename] => com.google.android.youtube-5.17.6-51706300-minAPI15
@@ -49,10 +57,30 @@
     } catch (Exception $ex) {
     }
 
-    $info["images"] = ApkImage::get_array_of_images_from_apk($f);
+    $info["images"] = ApkImage::get_array_of_images_from_apk($f, $is_dump_images_to_files); //also write images.
 
+    if ($is_dump_json_data_to_json === true) {
+      $json_filename = $f . '.json';
+
+      json_object_to_file($info, $json_filename, false);
+    }
 
     return $info;
+  }
+
+
+  /**
+   * write a json-like object to file
+   * @param      $data
+   * @param      $filename_path
+   * @param bool $force_overwrite (default=false) if true will always write new content
+   */
+  function json_object_to_file($data, $filename_path, $force_overwrite = false) {
+    if (true === @file_exists($filename_path) && false === $force_overwrite) return;
+
+    $data = toJSON($data); //convert an object to json-like text content.
+
+    @file_put_contents($filename_path, $data); //write data to json file
   }
 
 
