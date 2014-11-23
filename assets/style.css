@@ -1,0 +1,31 @@
+html,body {
+    font-family: monospace;
+}
+
+* {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.category{
+    margin-left: 20px;
+}
+
+.permissions {
+    padding-bottom: 10px;
+}
+
+.permissions .name{
+    display: block;
+    margin-left: 20px;
+}
+.description{
+    margin-left: 40px;
+    color:rgba(77,95,139,.6);
+}
+
+.image_container .found_at {
+    color:rgba(77,95,139,.6);
+}

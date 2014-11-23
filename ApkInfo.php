@@ -58,6 +58,9 @@
     }
 
     $info["images"] = ApkImage::get_array_of_images_from_apk($f, $is_dump_images_to_files); //also write images.
+    $info["image_main"] = json_decode(json_encode(pathinfo($f . '.png'), JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_TAG | JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), true);
+    $info["image_main"]["basename_escape"] = rawurlencode($info["image_main"]["basename"]);
+
 
     if ($is_dump_json_data_to_json === true) {
       $json_filename = $f . '.json';
@@ -71,6 +74,7 @@
 
   /**
    * write a json-like object to file
+   *
    * @param      $data
    * @param      $filename_path
    * @param bool $force_overwrite (default=false) if true will always write new content

@@ -9,9 +9,9 @@
     "datetime_file_access": 1416069626,
     "datetime_file_creation": 1416069626,
     "datetime_file_modification": 1416069669,
-    "datetime_file_access_human_readable": "was 6 days ago",
-    "datetime_file_creation_human_readable": "was 6 days ago",
-    "datetime_file_modification_human_readable": "was 6 days ago",
+    "datetime_file_access_human_readable": "was 1 week ago",
+    "datetime_file_creation_human_readable": "was 1 week ago",
+    "datetime_file_modification_human_readable": "was 1 week ago",
     "name": "org.fdroid.fdroid",
     "version": 0.76,
     "vercode": 760,
@@ -123,5 +123,12 @@
                 "filename": "FDroid.apk_36x36"
             }
         }
-    ]
+    ],
+    "image_main": {
+        "dirname": ".\/resources",
+        "basename": "FDroid.apk.png",
+        "extension": "png",
+        "filename": "FDroid.apk",
+        "basename_escape": "FDroid.apk.png"
+    }
 }

@@ -62,19 +62,22 @@
         array_push($images_data, $img);
       }
 
-      //---------------------- on final result(s) run again, dumping the images to image files.
-      if ($is_dump_images_to_files === true) {
-        foreach ($images_data as &$image_data) { //
+      //---------------------------------------------------------------- dump image to file,
+      foreach ($images_data as &$image_data) { //
+        if (true === $is_dump_images_to_files) {
           $image_filename = $apk_file_path . '_' . $image_data['width'] . 'x' . $image_data['height'] . '.' . $image_data['mime_type_ext'];
-
           $image_data['path_filename'] = json_decode(json_encode(pathinfo($image_filename), JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_TAG | JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), true);
           self::base64image_to_file($image_data['image'], $image_filename, false);
         }
-
-        //also dump the first in the array in a generic name (the list of image-resources is ordered by quality of image.
-        $image_filename = $apk_file_path . '.' . $image_data['mime_type_ext'];
-        self::base64image_to_file($images_data[0]['image'], $image_filename, false);
+        else {
+          $image_data['path_filename'] = "";
+        }
       }
+      $image_filename = $apk_file_path . '.' . $image_data['mime_type_ext']; //also dump "main"/"best" image to a generic name..
+      self::base64image_to_file($images_data[0]['image'], $image_filename, false);
+
+      //----------------------------------------------------------------
+
 
       return $images_data;
     }
