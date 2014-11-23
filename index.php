@@ -8,15 +8,25 @@ require_once("./ApkInfo.php");
 
 $files = files_in('./resources', '/.(apk|zip|tar|gzip)$/');
 $datas = [];
-foreach ($files as $file)
-  array_push(
-    $datas,
-    getApkFileInfo(
+foreach ($files as $file) {
+  $f = './resources' . $file;
+  $f = $f . '.json';
+
+  $data = null;
+
+  if (true === @file_exists($f)) {
+    $data = json_decode(@file_get_contents($f), true);  //use JSON file.
+  }
+  else {
+    $data = getApkFileInfo(                            //render data + JSON file + images.
       './resources/' . $file
       , true //save all images to files in the operation system
       , true //save the data as a JSON file
-    )
-  );
+    );
+  }
+
+  array_push($datas, $data);
+}
 ?><?php
 session_start();
 if (!isset($_SESSION['uniqueID'])) {
