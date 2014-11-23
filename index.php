@@ -93,7 +93,7 @@ if (!isset($_SESSION['uniqueID'])) {
       <input id="myFilter" data-type="search">
     </form>
 
-    <ul id="filelist" data-role="listview" data-filter="true" data-input="#myFilter" data-autodividers="true" data-inset="true">
+    <ul style="visibility:hidden;" id="filelist" data-role="listview" data-filter="true" data-input="#myFilter" data-autodividers="true" data-inset="true">
       <?php foreach ($datas as $data) { ?>
         <li data-identification="<?php echo $data['name']; ?>">
           <img class="package_logo" width="96" height="96" src="<?php echo $data['image_main']['dirname'] . '/' . $data['image_main']['basename_escape']; ?>" />
@@ -170,6 +170,7 @@ if (!isset($_SESSION['uniqueID'])) {
 <script src="assets/jquery.mobile-1.4.2.min.js"></script>
 
 <script>
+  setTimeout(function () {
   $('#filelist')
     .listview({
       autodividers: true,
@@ -178,6 +179,11 @@ if (!isset($_SESSION['uniqueID'])) {
       }
     })
     .listview('refresh');
+
+    setTimeout(function () {
+      document.querySelector('#filelist').style.cssText = "";
+    },30);
+  },30);
 </script>
 
 </body>
