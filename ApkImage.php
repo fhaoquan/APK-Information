@@ -85,11 +85,12 @@
 
     /**
      * @param $binary_image - a binary content of an image.
+     * @param $binary_image - a binary content of an image.
      *
      * @return array        - an associative array of an image, and image meta-data.
      */
     public static
-    function getImageData($binary_image) {
+    function getImageData($binary_image, $with_base64 = false) {
       $img_metadata = @getimagesizefromstring($binary_image);
       $image_data = [
         'width'               => isset($img_metadata[0]) ? $img_metadata[0] : 0,
@@ -103,10 +104,12 @@
       $image_data['mime_type_ext'] = isset($mime_type_parts[1]) ? $mime_type_parts[1] : 'png';
 
       $image_data['base64_prefix'] = "data:" . $image_data['mime_type'] . ";base64,";
-      $image_data['image'] = base64_encode($binary_image);
 
       //debug:
-      $image_data['base64_with_prefix'] = $image_data['base64_prefix'] . $image_data['image'];
+//      if(true === $with_base64) {
+        $image_data['image'] = base64_encode($binary_image);
+        $image_data['base64_with_prefix'] = $image_data['base64_prefix'] . $image_data['image'];
+//      }
 
       //unset($image_data['image']);
 

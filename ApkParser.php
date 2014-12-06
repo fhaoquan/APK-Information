@@ -635,6 +635,10 @@
         "description" => "Required to be able to reboot the device. Not for use by third-party applications.",
         "when_added"  => "API level 21"
       ],
+      "android.permission.ACTION_BOOT_COMPLETED"                                  => [
+        "description" => "Broadcast Action: This is broadcast once, after the system has finished booting. It can be used to perform application-specific initialization, such as installing alarms. You must hold the RECEIVE_BOOT_COMPLETED permission in order to receive this broadcast. This is a protected intent that can only be sent by the system.",
+        "when_added"  => "API level 1"
+      ],
       "android.permission.RECEIVE_BOOT_COMPLETED"                                  => [
         "description" => "Allows an application to receive the ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting. If you don't request this permission, you will not receive the broadcast at that time. Though holding this permission does not have any security implications, it can have a negative impact on the user experience by increasing the amount of time it takes the system to start and allowing applications to have themselves running without the user being aware of them. As such, you must explicitly declare your use of this facility to make that visible to the user.",
         "when_added"  => "API level 1"
@@ -834,6 +838,10 @@
       "com.android.voicemail.permission.WRITE_VOICEMAIL"                           => [
         "description" => "Allows an application to modify and remove existing voicemails in the system",
         "when_added"  => "API level 16"
+      ],
+      "android.permission.ACCESS_SUPERUSER"                           => [
+        "description" => "From SuperSU version 1.20 and onwards, the android.permission.ACCESS_SUPERUSER permission is declared by SuperSU. All root apps should from now on declare this permission in their AndroidManifest.xml. Due to changes in Android 5.0 Lollipop, this permission has been deprecated and is completely ignored from SuperSU v2.30 onwards. If this permission is not present, SuperSU will present a warning in its superuser request popup (this is configurable in SuperSU settings). At the time of this writing this permission is not enforced, but it is expected that sometime in the future it will be, and apps requesting root that do not have this permission set will be silently denied. If this permission is declared, the user will be able to see in the app permissions list that the app requests superuser access.",
+        "when_added"  => "API level UNKNOWN"
       ]
     ];
 

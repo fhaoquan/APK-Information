@@ -1,0 +1,166 @@
+<div data-role="page" id="pageone">
+  <!--<div data-role="panel" id="myPanelDefault">-->
+    <!--<h2>Panel Header</h2>-->
+
+    <!--<p>You can close the panel by clicking outside the panel, pressing the Esc key, by swiping, or by clicking the button below:</p>-->
+    <!--<a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Close panel</a>-->
+  <!--</div>-->
+
+  <!--<div data-role="panel" id="myPanelFixed" data-position-fixed="true">-->
+    <!--<h2>Panel Header</h2>-->
+
+    <!--<p>You can close the panel by clicking outside the panel, pressing the Esc key, by swiping, or by clicking the button below:</p>-->
+    <!--<a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Close panel</a>-->
+  <!--</div>-->
+
+  <!--<div data-role="header" data-position="fixed" data-fullscreen="true">-->
+    <!--<h1></h1>-->
+  <!--</div>-->
+
+  <div data-role="main" class="ui-content"><br><br>
+
+    <!--<p>Click on both buttons and start to scroll the page.</p>-->
+    <!--<a href="#myPanelDefault" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Open Default Panel</a>-->
+    <!--<a href="#myPanelFixed" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Open Panel with data-position-fixed="true"</a>-->
+
+    <!--<p><b>Tip:</b> Quickly search for a song by any letters appearing in the title. give it a try.</p>-->
+
+    <form class="ui-filterable">
+      <input id="myFilter" data-type="search">
+    </form>
+
+
+    <ul id="filelist" data-role="listview" data-filter="true" data-input="#myFilter" data-autodividers="true" data-inset="true">
+      {{#files}}
+      <li data-identification="{{name}} ({{filename}})">
+        <img class="package_logo" width="96" height="96" src="{{image_main.dirname}}/{{image_main.basename_escape}}"/>
+
+        <span class="category_title">File:</span>
+
+        <div class="category file">
+          <table>
+            <tbody>
+            <tr>
+              <td>name</td>
+              <td>:</td>
+              <td>
+                <a data-ajax="false" type="application/octet-stream" download="{{basename}}" href="{{dirname}}/{{basename_escape}}">{{basename}}</a>
+              </td>
+            </tr>
+            <tr>
+              <td>size</td>
+              <td>:</td>
+              <td>{{size_human_readable}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr/>
+        <span class="category_title">Package:</span>
+
+        <div class="category package">
+          <table>
+            <tbody>
+            <tr>
+              <td>name</td>
+              <td>:</td>
+              <td>{{name}}</td>
+            </tr>
+            <tr>
+              <td>version</td>
+              <td>:</td>
+              <td>{{version}}</td>
+            </tr>
+            <tr>
+              <td>sdk target</td>
+              <td>:</td>
+              <td>{{sdk_target_version}}</td>
+            </tr>
+            <tr>
+              <td>sdk minimum support</td>
+              <td>:</td>
+              <td>{{sdk_minimum_version}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <hr/>
+        <span class="category_title">Permissions:</span>
+
+        <div class="category permissions">
+          {{#eachkeys permissions}}
+          <div>
+            <span class="name">{{this.key}}</span>
+            <span class="description">{{this.value}}</span>
+          </div>
+          {{/eachkeys}}
+        </div>
+
+
+        <hr/>
+        <span class="category_title">Hardware Features:</span>
+
+        <div class="category hardware_features">
+          <table>
+            <tbody>
+            <tr>
+              <th>name</th>
+              <th>is required?</th>
+            </tr>
+            {{#hardware_features}}
+            <tr>
+              <td>{{name}}</td>
+              <td>{{is_required}}</td>
+            </tr>
+            {{/hardware_features}}
+            </tbody>
+          </table>
+        </div>
+
+
+        <hr/>
+        <span class="category_title">Images:</span>
+
+        <div class="category images">
+          {{#images}}
+          <div class="image_container">
+            <a data-ajax="false" type="{{mime_type}}" download="{{path_filename.basename}}" href="{{path_filename.dirname}}/{{path_filename.basename}}"><span class="width">{{width}}</span>x<span
+              class="height">{{height}}</span></a>
+            <span class="found_at">{{path}}</span>
+          </div>
+          {{/images}}
+        </div>
+
+      </li>
+      <br/>
+      {{/files}}
+    </ul>
+
+    <br>
+  </div>
+
+  <!--<div data-role="footer" style="text-align:center;" data-position="fixed" data-fullscreen="true">-->
+    <!--<a href="#myPanelFixed" class="ui-btn ui-corner-all ui-shadow ui-icon-info ui-btn-icon-left">מידע</a>-->
+  <!--</div>-->
+<!--</div>-->
+
+<script src="assets/jquery.mobile-1.4.2.min.js"></script>
+<script>
+  setTimeout(function () {
+    $('#filelist')
+      .listview({
+        autodividers: true,
+        autodividersSelector: function (li) {
+          return li.attr('data-identification');
+        }
+      })
+      .listview('refresh');
+
+//    setTimeout(function () {
+//      document.querySelector('#filelist').style.cssText = "";
+//    }, 30);
+  }, 30);
+</script>
