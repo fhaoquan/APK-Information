@@ -38,33 +38,20 @@ $template = <<<TEMPLATE
       <img class="package_logo" width="96" height="96" src="{{image_main.dirname}}/{{image_main.basename_escape}}"/>
 
       <div class="first">
-        <span class="category_title">File:</span>
-
-        <div class="category file">
+        <span class="category_title">Package:</span>
+        <div class="category package">
           <table>
             <tbody>
             <tr>
-              <td>name</td>
+              <td>file</td>
               <td>:</td>
-              <td>
-                <a data-ajax="false" type="application/octet-stream" download="{{basename}}" href="{{dirname}}/{{basename_escape}}">{{basename}}</a>
-              </td>
+              <td><a class="downloadlink" data-ajax="false" type="application/octet-stream" alt="{{basename}}" title="click to download {{basename}}" download="{{basename}}" href="{{dirname}}/{{basename_escape}}">{{basename}}</a></td>
             </tr>
             <tr>
               <td>size</td>
               <td>:</td>
               <td>{{size_human_readable}}</td>
             </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <hr/>
-        <span class="category_title">Package:</span>
-
-        <div class="category package">
-          <table>
-            <tbody>
             <tr>
               <td>name</td>
               <td>:</td>
@@ -81,7 +68,21 @@ $template = <<<TEMPLATE
                   {{/if}}
               </td>
             </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
+
+      <div class="rest" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-role="collapsible">
+        <h4>More...</h4>
+
+        <hr/>
+        <span class="category_title">Package SDK:</span>
+
+        <div class="category packagesdk">
+          <table>
+            <tbody>
             <tr>
               <td>sdk target</td>
               <td>:</td>
@@ -101,21 +102,18 @@ $template = <<<TEMPLATE
             </tbody>
           </table>
         </div>
-      </div>
 
-      <div class="rest" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-role="collapsible">
-        <h4>More...</h4>
         <hr/>
         <span class="category_title">Permissions:</span>
 
         <div class="category permissions">
           {{#if permissions}}
-           {{#eachkeys permissions}}
-           <div class="name">{{this.key}}</div>
-           <div class="description">{{this.value}}</div>
-           {{/eachkeys}}
+          {{#eachkeys permissions}}
+          <div class="name">{{this.key}}</div>
+          <div class="description">{{this.value}}</div>
+          {{/eachkeys}}
           {{else}}
-           <strong>NOPE!</strong>
+          <strong>NOPE!</strong>
           {{/if}}
         </div>
 

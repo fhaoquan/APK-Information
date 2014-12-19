@@ -92,7 +92,7 @@ if (!isset($_SESSION['uniqueID'])) {
     var files = JSON.parse(JXG.decompress('<?php //server will compress the large amount of text, and base64 it so it will be text.
                                                  echo base64_encode(gzencode(toJSON($datas, true), 9));
                                            ?>'));
-    var template = JXG.decompress('<?php //include text
+    var template = JXG.decompress('<?php //include template text skipping ajax'ing it..
                                       include_once('./index.mustache.html');
                                       echo base64_encode(gzencode($template, 9));
                                   ?>');
@@ -106,10 +106,11 @@ if (!isset($_SESSION['uniqueID'])) {
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       setTimeout(function () {
-        $('body').html(template_with_content);
+        $('body').html(template_with_content); //set content, politely using jQuery's html, will not work w/ innerHTML..
+
         setTimeout(function () {
-          document.querySelector('html').style.display = "";
-        }, 50);
+          document.querySelector('html').style.display = ""; //makes all visible again.
+        }, 10);
       }, 10);
     });
   </script>

@@ -69,3 +69,28 @@ tr:nth-child(odd) {
 tr.head {
     background-color: rgba(255, 255, 215, 0);
 }
+
+a.downloadlink {
+    font-size: large;
+    letter-spacing: .5pt;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+
+a.downloadlink:link, a.downloadlink:visited, a.downloadlink:hover, a.downloadlink:active {
+    text-decoration: none;
+}
+
+a.downloadlink:hover {
+    background-color: rgba(90, 255, 95, .3);
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.package_logo {
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .4);
+    margin-top: 10px;
+    margin-left: 5px;
+}
