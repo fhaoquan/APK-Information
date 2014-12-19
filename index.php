@@ -88,31 +88,42 @@ if (!isset($_SESSION['uniqueID'])) {
   <script src="assets/handlebars.min.js"></script>
   <script src="assets/handlebars_helpers.js"></script>
 
-  <script>
-    var files = JSON.parse(JXG.decompress('<?php //server will compress the large amount of text, and base64 it so it will be text.
-                                                 echo base64_encode(gzencode(toJSON($datas, true), 9));
-                                           ?>'));
-    var template = JXG.decompress('<?php //include template text skipping ajax'ing it..
-                                      include_once('./index.mustache.html');
-                                      echo base64_encode(gzencode($template, 9));
-                                  ?>');
-  </script>
+  <?php
+    include_once('./index.mustache.html');
 
+    $to_dom = toJSON([
+                       'files'    => toJSON($datas, true),
+                       'template' => $template
+                     ]);
+    @file_put_contents('_to_dom.txt', base64_encode(gzencode($to_dom)));
+  ?>
   <script>
-    template_with_content = Handlebars.compile(template); //let handlebars process the raw template.
-    template_with_content = template_with_content(files); //embedd the data into the template.
-  </script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      setTimeout(function () {
-        $('body').html(template_with_content); //set content, politely using jQuery's html, will not work w/ innerHTML..
-
-        setTimeout(function () {
-          document.querySelector('html').style.display = ""; //makes all visible again.
-        }, 10);
-      }, 10);
+    $.ajaxSetup({
+      async: true
     });
+    $.get('_to_dom.txt', function (data) {
+      "use strict";
+      var data, files, template, template_with_content;
+
+      data = JSON.parse(JXG.decompress(data));
+      files = JSON.parse(data.files);
+      template = data.template;
+
+      template_with_content = Handlebars.compile(template); //let handlebars process the raw template.
+      template_with_content = template_with_content(files); //embedd the data into the template.
+
+      $(document).ready(function () {
+        $('body').html(template_with_content); //set content, politely using jQuery's html, will not work w/ innerHTML..
+      })
+    })
+      .fail(function () {
+        $('body').html("<h1>ERROR</h1>"); //set content, politely using jQuery's html, will not work w/ innerHTML..
+      })
+      .always(function () {
+        document.querySelector('html').style.display = ""; //makes all visible again.
+      });
+
+
   </script>
 </head>
 <body></body>

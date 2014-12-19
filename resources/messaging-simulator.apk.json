@@ -1,0 +1,52 @@
+{
+    "dirname": ".\/resources",
+    "basename": "messaging-simulator.apk",
+    "extension": "apk",
+    "filename": "messaging-simulator",
+    "basename_escape": "messaging-simulator.apk",
+    "size": 1574331,
+    "size_human_readable": "1.50MB",
+    "datetime_file_access": 1417803411,
+    "datetime_file_creation": 1417803411,
+    "datetime_file_modification": 1416615545,
+    "datetime_file_access_human_readable": "was 2 weeks ago",
+    "datetime_file_creation_human_readable": "was 2 weeks ago",
+    "datetime_file_modification_human_readable": "was 4 weeks ago",
+    "name": "com.google.android.messagingsimulator",
+    "version": 1,
+    "vercode": 1,
+    "sdk_minimum_version": 21,
+    "sdk_target_version": 21,
+    "application_meta_data": {
+        "com.google.android.gms.version": "@7F090000"
+    },
+    "permissions": [],
+    "hardware_features": [],
+    "images": [
+        {
+            "width": 96,
+            "height": 96,
+            "channels": "RGB",
+            "bits_for_each_color": 8,
+            "mime_type": "image\/png",
+            "mime_type_ext": "png",
+            "base64_prefix": "data:image\/png;base64,",
+            "image": "iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABGdBTUEAALGPC\/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTFH80I3AAALk0lEQVR4Xu1deZAcVRmP94EHWF7\/iAdiWYJnimS3e7ZWIQhoPEorluURhEoEQlnFsSESyKFU6SbEEEyUBA\/MzrFhc0F2QQ1VSczu68luVgpJkaglqVCY0jIoKEZLNLV+vzfv233p\/mame9Izu93bv6pfzfSb97r7fb\/vfe\/oY2ZkyJAhwzTFptGZLy0q99O95dlvM0ktQ9\/+3OuLnvO1hx++\/GUmafoBAhSU21tUznfHxma8yCS3BHTMpQXP2ZU\/MOuNJml6ggxxZdFzB0qe22GSmo6il7sQxyQBrjNJ0xfkga8uKCdPBvnpfXs7X26Smwa0tILnriHjb+tR7Web5OkNMsjH4ZEUkz9vkpqGkmq\/SB9LuV8ySRn27u18CfUF95AAW4qDudeY5ADgvfBaMuJ5eZX7IBlyVoW5D+W9jvP6hjvPqdWXrKDf6BjryfuLPx5yXmWSMwB5z22HZ5IQ802SFqZ4IPdu6icWImzQ71u199YgQosOMcpdAG\/v89rGw1pB5S42+eaapAwME5vvJGNvg0eTp14NT7WN2xCVu5322VUqux+mfd5H\/c0mjL7MYTPYKHnOp0QjxkhqGV81h8vAoNHPWWScb\/iN1SxSy7p92o\/\/GSUvN5NCT49kqKZSuX2tnHtMOWBEQp6oJ2GTSQpJi6bdcoQednruzZJBJondfaMzzzKnl2709c17MTX\/JYIRJpnOmp7HLn2lOc30gpr8NbIBpgCVuwyh0Zxq+kCV5ImQyF88vvDeZ08evfPpv+7r3jJ8yQ4pT2Ps6D\/8x+Kqv\/3zd6sHf3vb3XKeCik0zqucbcrQc6DjLZilSpUGt4184v6xsVPEsQHwz88d7JbyNcJjzzzSzfsl9j9yaNFGKR9I5\/ggljrMaacH5FkrpQoz9zzRtcEy0sCpU\/\/dLOVrhM\/\/+\/hae9+Hnv7ZainfOJWzDn2VOfXko7K0IFTU4pbhOTtgdDbSkyd+HlsLOHj0+2smBDh1\/4O\/nld\/3qFyl5vTTz6oQqsCFRS4fWRuL2L18B9WrSXRxDyNct\/hJRuePPFQ965HQxifiGsUqZgf6NVMoYJJYCpmyuRJ10qVSwKxZmSqkUyYJebWr\/PEReU+0Oe1vdZUJ3nIH8idK1YsSVTtHzHVSR7yyr1UrFSCaF+hSxyoCS+QKpUkUgi91VQneaAJzVKpUkkiDSK+Z6qTPFAFvuOvUOKo3M2mOslDacg5H7ePlFR7U1gYcj4Qhfmy+\/6wxP4xg+8ZdN9pqjN1gJtpqXP6Io2TF5OH3EAjhTmbRme+wvycemCGXFK5Tiytwwb0eVV+yLmg1j1JsUBfRqzWsVJTLaj2C01WDT0KUu4S6shuqRCCOV20jy7avplZ9JybQIq3N9HvN0ahLsPlrX2eKSf2efrdegWv7R10zHtFG3jO8qZeWaMDXC0fmOnsKHpt7zHZkT+xs2CLd5jq6CV1cqheIc8ElbOyKS2hNOieS57bLx70NDrr+QTSIAB5+7e0AQhUn+VSHj\/R75ki8YGMP186mETq8N6FMg0LUPZ9t7dbTApHK1AXhBby\/hAOSKSwizKxgk7kVvFgInM5lAkjAO1XTK9JVWGtsvX2Sw6lhS1Jv9nflbMcdcGIzs5Tk8r5IcrECqrwMvFgAgtlRy\/j1hUARpDSo5CMGFXEkueIhq9CvSJaGZaKvwdI57MRZWJF2PgH8jp6TQFChJUxg4cem7+H0\/YducVD2uHjpSOVNGdgx8HP7Mb2yf+cOInfXvjfyReeembPMaRzORYprFgsEC9JRxJAufegTKygE18hHUxiKAFCEMYEYExOCwrgDpz4xxN\/0Rl9+Pu\/jj3HIsCgYY3P1CIo5zZdf5rISXlENiMExSVAFCMYO2rsPnT9foSsvT4BDh5d+yi2YWyIgzS0mD89O3Ic6bZ4Fa8Of6mzVM71kzGX6vqnRQCRQjiCUDAgA16OdH8LYEOz8ZnwfIQi0E6PSjoPvRqaEgF83mcMr1uF7pCt32kbhoXhObbDyH4B+LfxchY5NKFF6GNEZKXFpEqACLQEUL\/\/9gh\/9wuA70CgPJEF8LeO8IRDON\/U9U+dAMoJpqFFWOEIxoMRIQYbE4bnT+RBiMH2+D4schl7FBWFlVaTNgHIwHY40N\/94ccQxoMREQrY89ngjfQBfFwTWmpz3BHS2gIsT69GGFa3ALN94vmJ4SYLwKMgGFqLQPsdII\/HqAjp9iioMaZAANvjKxTCj0AY0BZg35EluhUALADIocYPiGJPxpg4H24FlSUJan1wCPqut81vFaasBQTFqE4Y0RYAZGPbAsDI2K41E65LDo2BlplAASieh16MC8\/qrSaKqNFZESDKUkQqBRCNHKIfiYF6HmBejSD9HuRUEyAODw01comLpwubfAHyYS9k1GJrvF1i8gVIMqnemQABtrI1mNVQqlPdp3zGOdkC5FW7izIQYEv5ozulPGfClvUHEDrpAmwbmVv1yUgmxu7+8T5muP5x\/U4zrmcBMPPlpQgAs18s3Nn74XkD9menI81\/TJHmgkxiBdg6ctkuKY9NvzEwqUKaHzCwzkOeyWtDEmxjswAQk9NApKVegF8euubKrSNX1B0B2cbAyiW2x9d2KA2f2Ea6Ni4JwK0DYvGMF79xPl4BZQGA3zz1o8eRBmI7jAAlr13fmBVFgEm\/Jmy3gDDx2jYGjIRtf8hAOoy9nYy9+9Ci\/XYZm9x62Ni2ABCHxcJ2GAGoDpEFIMZ\/VwQJEPq+oHzZmY0yECDMiMU2BmI9ttn7JY6SOMgDY\/t\/49DEq6AsAO+Xy+B7GAEKZVffGRfpaU\/lbkCZWEHG\/Ip4MIG9Ix36bVRagMDqYpC2MdhgtQRgL68lgH9\/CEloAdwK7Dw1qdxlqAvu\/i54TrgRnXJvQJlYYd71UPcEqKWsNEUqAgh5\/LSNUe0Ci00OU1FaAL7bwuEzjAB8ZxxAneuNUh4\/KQSfb4rECxLgs9IBmdT59BYHc2812RsSoFofAKOB8N5G+gB8R1luBUgLIwDVYUKA0c7XkYNVfdGHpnIWmuzNAZ3QZcQtwoHX4bFUk01jQoDaF2BsY4QaBVEaj4Lg6dyxsniAfxSE7yALBIQRAIMPUx2NUnn22ZR+RzCfs5Mc8MsteckH3ixFnZNDhv0CHfRz1Z4OoZO6jk+w1mjIbwzbSDbG5wHEfUcWV50HoDzn8wvArQBptQWoXKO2Q6oNPLpUVLlPUryfh6dlNg9fNPUe6CZxFgUrFqRkDHhzvStcaBlhZ8J2GgtcWwBD5YgCJALUgV0vVioutmBRzn5AI3Gg5tnUB7UpPIjpZ0S\/qEluATpG2pWx2aD3jvclLfB+kFrAtaY6ycPmQfdN1ApqrAWFuz3FZkG4gWucZyqqQAwwTHWSCRoJfV2qWFXCiD5qo+OeHSl\/gNFFrUpzLSDR0P+UpJ+5FSrYCgqCgvXEpNDTnZo\/edAvbtLzBveu2iFp8knCbMSMP7X\/MYDH\/PO\/6ngDXh+PWaX+P69ob1W5Qpcb7jyHiW1NLzdTyF+Fznq8Nh\/Hx+Ih+qtp8epiCTRh65KNFGRpyPmYKRYAXpUglRGpnHWmWAZq9lHepH6xKRZAxNsHMwEYUTrpvOdeYooFEPG6bSYAg0YcmQCTibgEiHj3WiYAI0oIKpSdOaZYAJkADSKuPiDiQxSZAIy4BMC73qQyIjMBJpAJMMmYpBB0tymWIS4BIt0+6LmZAIzYhqFDzgVSGZFZC5hAUblXiUYSiDBjigWART6pjEQsf5hiGQpe7n2SkfwsKPcn+Bc+U0wEGfYuqayf+OdWUyQDQK2g\/r\/rqVybyV4VxSHnvbSvB8TyTAo\/0+7\/I+vB3Px6u2Qw8vx+8uzQf7BWULlZZGTxyRxc6cI1AJM1gw1cOSMjzSJj41b4H5CxVpPxF\/So9rebLKFRUO1vRlna1xp4PIm7mPqPtqa81TZDhgwZkogZM\/4PMYfVBFKbCyAAAAAASUVORK5CYII=",
+            "base64_with_prefix": "data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABGdBTUEAALGPC\/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTFH80I3AAALk0lEQVR4Xu1deZAcVRmP94EHWF7\/iAdiWYJnimS3e7ZWIQhoPEorluURhEoEQlnFsSESyKFU6SbEEEyUBA\/MzrFhc0F2QQ1VSczu68luVgpJkaglqVCY0jIoKEZLNLV+vzfv233p\/mame9Izu93bv6pfzfSb97r7fb\/vfe\/oY2ZkyJAhwzTFptGZLy0q99O95dlvM0ktQ9\/+3OuLnvO1hx++\/GUmafoBAhSU21tUznfHxma8yCS3BHTMpQXP2ZU\/MOuNJml6ggxxZdFzB0qe22GSmo6il7sQxyQBrjNJ0xfkga8uKCdPBvnpfXs7X26Smwa0tILnriHjb+tR7Web5OkNMsjH4ZEUkz9vkpqGkmq\/SB9LuV8ySRn27u18CfUF95AAW4qDudeY5ADgvfBaMuJ5eZX7IBlyVoW5D+W9jvP6hjvPqdWXrKDf6BjryfuLPx5yXmWSMwB5z22HZ5IQ802SFqZ4IPdu6icWImzQ71u199YgQosOMcpdAG\/v89rGw1pB5S42+eaapAwME5vvJGNvg0eTp14NT7WN2xCVu5322VUqux+mfd5H\/c0mjL7MYTPYKHnOp0QjxkhqGV81h8vAoNHPWWScb\/iN1SxSy7p92o\/\/GSUvN5NCT49kqKZSuX2tnHtMOWBEQp6oJ2GTSQpJi6bdcoQednruzZJBJondfaMzzzKnl2709c17MTX\/JYIRJpnOmp7HLn2lOc30gpr8NbIBpgCVuwyh0Zxq+kCV5ImQyF88vvDeZ08evfPpv+7r3jJ8yQ4pT2Ps6D\/8x+Kqv\/3zd6sHf3vb3XKeCik0zqucbcrQc6DjLZilSpUGt4184v6xsVPEsQHwz88d7JbyNcJjzzzSzfsl9j9yaNFGKR9I5\/ggljrMaacH5FkrpQoz9zzRtcEy0sCpU\/\/dLOVrhM\/\/+\/hae9+Hnv7ZainfOJWzDn2VOfXko7K0IFTU4pbhOTtgdDbSkyd+HlsLOHj0+2smBDh1\/4O\/nld\/3qFyl5vTTz6oQqsCFRS4fWRuL2L18B9WrSXRxDyNct\/hJRuePPFQ965HQxifiGsUqZgf6NVMoYJJYCpmyuRJ10qVSwKxZmSqkUyYJebWr\/PEReU+0Oe1vdZUJ3nIH8idK1YsSVTtHzHVSR7yyr1UrFSCaF+hSxyoCS+QKpUkUgi91VQneaAJzVKpUkkiDSK+Z6qTPFAFvuOvUOKo3M2mOslDacg5H7ePlFR7U1gYcj4Qhfmy+\/6wxP4xg+8ZdN9pqjN1gJtpqXP6Io2TF5OH3EAjhTmbRme+wvycemCGXFK5Tiytwwb0eVV+yLmg1j1JsUBfRqzWsVJTLaj2C01WDT0KUu4S6shuqRCCOV20jy7avplZ9JybQIq3N9HvN0ahLsPlrX2eKSf2efrdegWv7R10zHtFG3jO8qZeWaMDXC0fmOnsKHpt7zHZkT+xs2CLd5jq6CV1cqheIc8ElbOyKS2hNOieS57bLx70NDrr+QTSIAB5+7e0AQhUn+VSHj\/R75ki8YGMP186mETq8N6FMg0LUPZ9t7dbTApHK1AXhBby\/hAOSKSwizKxgk7kVvFgInM5lAkjAO1XTK9JVWGtsvX2Sw6lhS1Jv9nflbMcdcGIzs5Tk8r5IcrECqrwMvFgAgtlRy\/j1hUARpDSo5CMGFXEkueIhq9CvSJaGZaKvwdI57MRZWJF2PgH8jp6TQFChJUxg4cem7+H0\/YducVD2uHjpSOVNGdgx8HP7Mb2yf+cOInfXvjfyReeembPMaRzORYprFgsEC9JRxJAufegTKygE18hHUxiKAFCEMYEYExOCwrgDpz4xxN\/0Rl9+Pu\/jj3HIsCgYY3P1CIo5zZdf5rISXlENiMExSVAFCMYO2rsPnT9foSsvT4BDh5d+yi2YWyIgzS0mD89O3Ic6bZ4Fa8Of6mzVM71kzGX6vqnRQCRQjiCUDAgA16OdH8LYEOz8ZnwfIQi0E6PSjoPvRqaEgF83mcMr1uF7pCt32kbhoXhObbDyH4B+LfxchY5NKFF6GNEZKXFpEqACLQEUL\/\/9gh\/9wuA70CgPJEF8LeO8IRDON\/U9U+dAMoJpqFFWOEIxoMRIQYbE4bnT+RBiMH2+D4schl7FBWFlVaTNgHIwHY40N\/94ccQxoMREQrY89ngjfQBfFwTWmpz3BHS2gIsT69GGFa3ALN94vmJ4SYLwKMgGFqLQPsdII\/HqAjp9iioMaZAANvjKxTCj0AY0BZg35EluhUALADIocYPiGJPxpg4H24FlSUJan1wCPqut81vFaasBQTFqE4Y0RYAZGPbAsDI2K41E65LDo2BlplAASieh16MC8\/qrSaKqNFZESDKUkQqBRCNHKIfiYF6HmBejSD9HuRUEyAODw01comLpwubfAHyYS9k1GJrvF1i8gVIMqnemQABtrI1mNVQqlPdp3zGOdkC5FW7izIQYEv5ozulPGfClvUHEDrpAmwbmVv1yUgmxu7+8T5muP5x\/U4zrmcBMPPlpQgAs18s3Nn74XkD9menI81\/TJHmgkxiBdg6ctkuKY9NvzEwqUKaHzCwzkOeyWtDEmxjswAQk9NApKVegF8euubKrSNX1B0B2cbAyiW2x9d2KA2f2Ea6Ni4JwK0DYvGMF79xPl4BZQGA3zz1o8eRBmI7jAAlr13fmBVFgEm\/Jmy3gDDx2jYGjIRtf8hAOoy9nYy9+9Ci\/XYZm9x62Ni2ABCHxcJ2GAGoDpEFIMZ\/VwQJEPq+oHzZmY0yECDMiMU2BmI9ttn7JY6SOMgDY\/t\/49DEq6AsAO+Xy+B7GAEKZVffGRfpaU\/lbkCZWEHG\/Ip4MIG9Ix36bVRagMDqYpC2MdhgtQRgL68lgH9\/CEloAdwK7Dw1qdxlqAvu\/i54TrgRnXJvQJlYYd71UPcEqKWsNEUqAgh5\/LSNUe0Ci00OU1FaAL7bwuEzjAB8ZxxAneuNUh4\/KQSfb4rECxLgs9IBmdT59BYHc2812RsSoFofAKOB8N5G+gB8R1luBUgLIwDVYUKA0c7XkYNVfdGHpnIWmuzNAZ3QZcQtwoHX4bFUk01jQoDaF2BsY4QaBVEaj4Lg6dyxsniAfxSE7yALBIQRAIMPUx2NUnn22ZR+RzCfs5Mc8MsteckH3ixFnZNDhv0CHfRz1Z4OoZO6jk+w1mjIbwzbSDbG5wHEfUcWV50HoDzn8wvArQBptQWoXKO2Q6oNPLpUVLlPUryfh6dlNg9fNPUe6CZxFgUrFqRkDHhzvStcaBlhZ8J2GgtcWwBD5YgCJALUgV0vVioutmBRzn5AI3Gg5tnUB7UpPIjpZ0S\/qEluATpG2pWx2aD3jvclLfB+kFrAtaY6ycPmQfdN1ApqrAWFuz3FZkG4gWucZyqqQAwwTHWSCRoJfV2qWFXCiD5qo+OeHSl\/gNFFrUpzLSDR0P+UpJ+5FSrYCgqCgvXEpNDTnZo\/edAvbtLzBveu2iFp8knCbMSMP7X\/MYDH\/PO\/6ngDXh+PWaX+P69ob1W5Qpcb7jyHiW1NLzdTyF+Fznq8Nh\/Hx+Ih+qtp8epiCTRh65KNFGRpyPmYKRYAXpUglRGpnHWmWAZq9lHepH6xKRZAxNsHMwEYUTrpvOdeYooFEPG6bSYAg0YcmQCTibgEiHj3WiYAI0oIKpSdOaZYAJkADSKuPiDiQxSZAIy4BMC73qQyIjMBJpAJMMmYpBB0tymWIS4BIt0+6LmZAIzYhqFDzgVSGZFZC5hAUblXiUYSiDBjigWART6pjEQsf5hiGQpe7n2SkfwsKPcn+Bc+U0wEGfYuqayf+OdWUyQDQK2g\/r\/rqVybyV4VxSHnvbSvB8TyTAo\/0+7\/I+vB3Px6u2Qw8vx+8uzQf7BWULlZZGTxyRxc6cI1AJM1gw1cOSMjzSJj41b4H5CxVpPxF\/So9rebLKFRUO1vRlna1xp4PIm7mPqPtqa81TZDhgwZkogZM\/4PMYfVBFKbCyAAAAAASUVORK5CYII=",
+            "path": "*external_default*",
+            "path_filename": {
+                "dirname": ".\/resources",
+                "basename": "messaging-simulator.apk_96x96.png",
+                "extension": "png",
+                "filename": "messaging-simulator.apk_96x96"
+            }
+        }
+    ],
+    "image_main": {
+        "dirname": ".\/resources",
+        "basename": "messaging-simulator.apk.png",
+        "extension": "png",
+        "filename": "messaging-simulator.apk",
+        "basename_escape": "messaging-simulator.apk.png"
+    }
+}
