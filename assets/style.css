@@ -26,6 +26,13 @@ li:nth-child(3n+2) {
     -ms-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
+
+    /* --- fix top layer <li> .ui-listview of jQuery Mobile --- */
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    word-break: break-all !important;
+    /* --- ------------------------------------------------ --- */
+
 }
 
 .category {
@@ -44,8 +51,21 @@ li:nth-child(3n+2) {
 .description {
     margin-left: 40px;
     color: rgba(77, 95, 139, .6);
+    white-space: normal; /* fix top layer <li> .ui-listview of jQuery Mobile */
 }
 
 .image_container .found_at {
     color: rgba(77, 95, 139, .6);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 215, .2);
+}
+
+tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+tr.head {
+    background-color: rgba(255, 255, 215, 0);
 }

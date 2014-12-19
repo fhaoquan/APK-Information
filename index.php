@@ -23,20 +23,29 @@ foreach ($files as &$file) {
     );
   }
   //make the JSON text smaller by removing the base64 and base64-with-prefix image representations (after they have already used..)
-  foreach($data['images'] as &$image){
+  foreach ($data['images'] as &$image) {
     unset($image['image']);
     unset($image['base64_with_prefix']);
   }
   array_push($datas, $data);
 }
 
+//----------------------------- make a temporary array that holds the package name and version by key, sort it by key, back to flat array.
+$datas_associative = [];
+foreach ($datas as $data) {
+  $key = mb_strtolower($data['name'] . '_' . $data['version']);
+  if (!isset($datas2[ $key ])) {
+    $datas_associative[ $key ] = $data;
+  }
+}
+ksort($datas_associative);
+$datas = array_values($datas_associative); //sorted array by package name and version.
+//-----------------------------
+
 $datas = [
-  'files'  => $datas,
+  'files'  => $datas, //easier to loop in mustache/handlebars on 'inside' element such as 'files'...
   'length' => count($datas)
 ];
-
-//server will compress the large amount of text, and base64 it so it will be text.
-$compressed_json_data = base64_encode(gzencode(toJSON($datas, true), 9));
 ?><?php
 session_start();
 if (!isset($_SESSION['uniqueID'])) {
@@ -80,22 +89,29 @@ if (!isset($_SESSION['uniqueID'])) {
   <script src="assets/handlebars_helpers.js"></script>
 
   <script>
-    var files = JSON.parse(JXG.decompress('<?php echo $compressed_json_data; ?>'));
+    var files = JSON.parse(JXG.decompress('<?php //server will compress the large amount of text, and base64 it so it will be text.
+                                                 echo base64_encode(gzencode(toJSON($datas, true), 9));
+                                           ?>'));
+    var template = JXG.decompress('<?php //include text
+                                      include_once('./index.mustache.html');
+                                      echo base64_encode(gzencode($template, 9));
+                                  ?>');
   </script>
 
   <script>
-    $.get('index.mustache.html', function (template_raw_content) {
-      var result = Handlebars.compile(template_raw_content); /*old:      Mustache.render(template_raw_content, files);  */
-      result = result(files);
+    template_with_content = Handlebars.compile(template); //let handlebars process the raw template.
+    template_with_content = template_with_content(files); //embedd the data into the template.
+  </script>
 
-      $('body').html(result);
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      setTimeout(function () {
+        $('body').html(template_with_content);
+        setTimeout(function () {
+          document.querySelector('html').style.display = "";
+        }, 50);
+      }, 10);
     });
-  </script>
-
-  <script>
-    setTimeout(function () {
-      document.querySelector('html').style.display = "";
-    }, 50);
   </script>
 </head>
 <body></body>
