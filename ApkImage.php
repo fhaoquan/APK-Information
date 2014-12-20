@@ -5,7 +5,8 @@
      * returns an associative-array of images, and their basic meta-data such as height, width, channel level, bits for
      * each color, and mime-type.
      *
-     * @param       $apk_file_path - an operation-system-sensitive path to the apk file
+     * @param string $apk_file_path           - an operation-system-sensitive path to the apk file
+     * @param bool   $is_dump_images_to_files - saving image files
      *
      * @return array
      */
@@ -84,10 +85,12 @@
 
 
     /**
-     * @param $binary_image - a binary content of an image.
-     * @param $binary_image - a binary content of an image.
+     * try to fetch logos from some of the most common places in the APK package (read content w/o extracting).
      *
-     * @return array        - an associative array of an image, and image meta-data.
+     * @param binary $binary_image - a binary content of an image.
+     * @param bool   $with_base64  - keep text of image in the result.
+     *
+     * @return array
      */
     public static
     function getImageData($binary_image, $with_base64 = false) {
@@ -107,8 +110,8 @@
 
       //debug:
 //      if(true === $with_base64) {
-        $image_data['image'] = base64_encode($binary_image);
-        $image_data['base64_with_prefix'] = $image_data['base64_prefix'] . $image_data['image'];
+      $image_data['image'] = base64_encode($binary_image);
+      $image_data['base64_with_prefix'] = $image_data['base64_prefix'] . $image_data['image'];
 //      }
 
       //unset($image_data['image']);

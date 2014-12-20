@@ -11,9 +11,11 @@
 
 
   /**
-   * @param       $fileFullPath
-   * @param bool  $is_dump_images_to_files   (default is false) if true, the images will be written to the OS, same path
-   *                                         of the APK,
+   * @param string $fileFullPath              - full path to the .apk file.
+   * @param bool   $is_dump_images_to_files   - saving image files in the same folder.
+   * @param bool   $is_dump_json_data_to_json - saving the information in a json, in the same folder.
+   * @param bool   $is_force_overwrite_json   - try to overwrite the old file, even if it already exist.
+   * @param bool   $is_keep_base64_images     - keep the large base64-images in the json (takes a lot of space).
    *
    * @return mixed
    */

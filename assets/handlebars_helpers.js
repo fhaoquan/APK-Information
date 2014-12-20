@@ -36,6 +36,7 @@ Handlebars.registerHelper('eachkeys', function (context, options) {
 
     if (!empty) {
         for (key in context) {
+          if(context.hasOwnProperty(key))
             ret = ret + fn({'key': key, 'value': context[key]});
         }
     } else {

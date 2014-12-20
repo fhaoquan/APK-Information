@@ -376,7 +376,7 @@
         "when_added"  => "API level 1"
       ],
       "android.permission.CAMERA"                                                  => [
-        "description" => "Required to be able to access the camera device. This will automatically enforce the <uses-feature> manifest element for all camera features. If you do not require all camera features or can properly operate if a camera is not available, then you must modify your manifest as appropriate in order to install on devices that don't support all camera features.",
+        "description" => "Required to be able to access the camera device. This will automatically enforce the \<uses-feature\> manifest element for all camera features. If you do not require all camera features or can properly operate if a camera is not available, then you must modify your manifest as appropriate in order to install on devices that don't support all camera features.",
         "when_added"  => "API level 1"
       ],
       "android.permission.CAPTURE_AUDIO_OUTPUT"                                    => [

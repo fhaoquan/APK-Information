@@ -1,7 +1,6 @@
 (function (window) {
   "use strict";
   var
-    template,
     unzip = function (zipped_data) {
       return JSON.parse(JXG.decompress(zipped_data));
     }
