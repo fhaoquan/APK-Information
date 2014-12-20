@@ -34,7 +34,7 @@
   $datas_associative = [];
   foreach ($datas as $data) {
     $key = mb_strtolower($data['name'] . '_' . $data['version']);
-    if (!isset($datas2[ $key ])) {
+    if (!isset($datas_associative[ $key ])) {
       $datas_associative[ $key ] = $data;
     }
   }

@@ -1,5 +1,3 @@
-<?php
-$template = <<<TEMPLATE
 <div data-role="page" id="pageone">
 <!--<div data-role="panel" id="myPanelDefault">-->
 <!--<h2>Panel Header</h2>-->
@@ -181,10 +179,8 @@ $template = <<<TEMPLATE
       })
       .listview('refresh');
 
-//    setTimeout(function () {
-//      document.querySelector('#filelist').style.cssText = "";
-//    }, 30);
+    setTimeout(function () {
+      document.querySelector('html').style.cssText = "";
+    }, 30);
   }, 30);
 </script>
-TEMPLATE;
-?>

@@ -17,7 +17,7 @@
    *
    * @return mixed
    */
-  function getApkFileInfo($fileFullPath, $is_dump_images_to_files = false, $is_dump_json_data_to_json = false) {
+  function getApkFileInfo($fileFullPath, $is_dump_images_to_files = false, $is_dump_json_data_to_json = false, $is_force_overwrite_json = false, $is_keep_base64_images = false) {
 
     //APK external (the APK file) information
     $info = pathinfo($fileFullPath); //[dirname] => ./resources | [basename] => com.google.android.youtube-5.17.6-51706300-minAPI15.apk | [extension] => apk | [filename] => com.google.android.youtube-5.17.6-51706300-minAPI15
@@ -31,14 +31,14 @@
 
     $time = time();
     //unix time of file's last-access, file creation time, file's last-modification time.
-    $info['datetime_file_access'] = fileatime($f);
-    $info['datetime_file_creation'] = filectime($f);
-    $info['datetime_file_modification'] = filemtime($f);
+    $info['datetime_file_access'] = @fileatime($f) || $time;
+    $info['datetime_file_creation'] = @filectime($f) || $time;
+    $info['datetime_file_modification'] = @filemtime($f) || $time;
 
     //human readable format of the same from above ("3 hours ago", or if time signature was fiddle with it may be "will be in 3 hours")
-    $info['datetime_file_access_human_readable'] = human_time_diff(fileatime($f), $time);
-    $info['datetime_file_creation_human_readable'] = human_time_diff(filectime($f), $time);
-    $info['datetime_file_modification_human_readable'] = human_time_diff(filemtime($f), $time);
+    $info['datetime_file_access_human_readable'] = human_time_diff(@fileatime($f), $time);
+    $info['datetime_file_creation_human_readable'] = human_time_diff(@filectime($f), $time);
+    $info['datetime_file_modification_human_readable'] = human_time_diff(@filemtime($f), $time);
 
 
     //APK internal (the APK package) information
@@ -61,12 +61,20 @@
     $info["image_main"] = json_decode(json_encode(pathinfo($f . '.png'), JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_TAG | JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), true);
     $info["image_main"]["basename_escape"] = rawurlencode($info["image_main"]["basename"]);
 
+    //make the JSON text smaller by removing the base64 and base64-with-prefix image representations (after they have already used..)
+    if (!$is_keep_base64_images) {
+      foreach ($info['images'] as &$image) {
+        unset($image['image']);
+        unset($image['base64_with_prefix']);
+      }
+    }
 
     if ($is_dump_json_data_to_json === true) {
       $json_filename = $f . '.json';
 
-      json_object_to_file($info, $json_filename, false);
+      json_object_to_file($info, $json_filename, $is_force_overwrite_json);
     }
+
 
     return $info;
   }

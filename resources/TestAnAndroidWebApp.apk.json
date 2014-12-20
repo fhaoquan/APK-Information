@@ -1,0 +1,95 @@
+{
+    "dirname": ".\/resources",
+    "basename": "TestAnAndroidWebApp.apk",
+    "extension": "apk",
+    "filename": "TestAnAndroidWebApp",
+    "basename_escape": "TestAnAndroidWebApp.apk",
+    "size": 662865,
+    "size_human_readable": "647.33kB",
+    "datetime_file_access": true,
+    "datetime_file_creation": true,
+    "datetime_file_modification": true,
+    "datetime_file_access_human_readable": "was 2 weeks ago",
+    "datetime_file_creation_human_readable": "was 2 weeks ago",
+    "datetime_file_modification_human_readable": "was 4 weeks ago",
+    "name": "simple.app.test",
+    "version": 1,
+    "vercode": 1,
+    "sdk_minimum_version": 8,
+    "sdk_target_version": null,
+    "application_meta_data": [],
+    "permissions": {
+        "android.permission.INTERNET": "Allows applications to open network sockets.",
+        "android.permission.ACCESS_NETWORK_STATE": "Allows applications to access information about networks",
+        "android.permission.WRITE_SETTINGS": "Allows an application to read or write the system settings.",
+        "android.permission.WAKE_LOCK": "Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming",
+        "android.permission.CLEAR_APP_CACHE": "Allows an application to clear the caches of all installed applications on the device.",
+        "android.permission.ACCESS_COARSE_LOCATION": "Allows an app to access approximate location derived from network location sources such as cell towers and Wi-Fi.",
+        "android.permission.ACCESS_MOCK_LOCATION": "Allows an application to create mock location providers for testing",
+        "android.permission.ACCESS_FINE_LOCATION": "Allows an app to access precise location from location sources such as GPS, cell towers, and Wi-Fi.",
+        "android.permission.ACCESS_LOCATION_EXTRA_COMMANDS": "Allows an application to access extra location provider commands",
+        "android.permission.CHANGE_CONFIGURATION": "Allows an application to modify the current configuration, such as locale.",
+        "android.permission.CHANGE_NETWORK_STATE": "Allows applications to change network connectivity state",
+        "android.permission.SET_DEBUG_APP": "Configure an application for debugging. Not for use by third-party applications.",
+        "android.permission.WRITE_EXTERNAL_STORAGE": "Allows an application to write to external storage. Note: If both your minSdkVersion and targetSdkVersion values are set to 3 or lower, the system implicitly grants your app this permission. If you don\u0027t need this permission, be sure your targetSdkVersion is 4 or higher. Starting in API level 19, this permission is not required to read\/write files in your application-specific directories returned by getExternalFilesDir(String) and getExternalCacheDir().",
+        "android.permission.WRITE_APN_SETTINGS": "Allows applications to write the apn settings. Not for use by third-party applications."
+    },
+    "hardware_features": [],
+    "images": [
+        {
+            "width": 72,
+            "height": 72,
+            "channels": "RGB",
+            "bits_for_each_color": 8,
+            "mime_type": "image\/png",
+            "mime_type_ext": "png",
+            "base64_prefix": "data:image\/png;base64,",
+            "path": "res\/drawable-hdpi\/icon.png",
+            "path_filename": {
+                "dirname": ".\/resources",
+                "basename": "TestAnAndroidWebApp.apk_72x72.png",
+                "extension": "png",
+                "filename": "TestAnAndroidWebApp.apk_72x72"
+            }
+        },
+        {
+            "width": 48,
+            "height": 48,
+            "channels": "RGB",
+            "bits_for_each_color": 8,
+            "mime_type": "image\/png",
+            "mime_type_ext": "png",
+            "base64_prefix": "data:image\/png;base64,",
+            "path": "res\/drawable-mdpi\/icon.png",
+            "path_filename": {
+                "dirname": ".\/resources",
+                "basename": "TestAnAndroidWebApp.apk_48x48.png",
+                "extension": "png",
+                "filename": "TestAnAndroidWebApp.apk_48x48"
+            }
+        },
+        {
+            "width": 36,
+            "height": 36,
+            "channels": "RGB",
+            "bits_for_each_color": 8,
+            "mime_type": "image\/png",
+            "mime_type_ext": "png",
+            "base64_prefix": "data:image\/png;base64,",
+            "path": "res\/drawable-ldpi\/icon.png",
+            "path_filename": {
+                "dirname": ".\/resources",
+                "basename": "TestAnAndroidWebApp.apk_36x36.png",
+                "extension": "png",
+                "filename": "TestAnAndroidWebApp.apk_36x36"
+            }
+        }
+    ],
+    "image_main": {
+        "dirname": ".\/resources",
+        "basename": "TestAnAndroidWebApp.apk.png",
+        "extension": "png",
+        "filename": "TestAnAndroidWebApp.apk",
+        "basename_escape": "TestAnAndroidWebApp.apk.png"
+    }
+}

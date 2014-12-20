@@ -44,33 +44,35 @@ if (!isset($_SESSION['uniqueID'])) {
   <!--  <script src="assets/mustache.min.js"></script>-->
   <script src="assets/handlebars.min.js"></script>
   <script src="assets/handlebars_helpers.js"></script>
+  <script src="assets/main.js"></script>
 
   <script>
-    $.ajaxSetup({
-      async: true
-    });
-    $.get('_to_dom.txt', function (data) {
-      "use strict";
-      var data, files, template, template_with_content;
-
-      data = JSON.parse(JXG.decompress(data));
-
-      files = JSON.parse(data.files);
-      template = data.template;
-
-      template_with_content = Handlebars.compile(template); //let handlebars process the raw template.
-      template_with_content = template_with_content(files); //embedd the data into the template.
-
-      $(document).ready(function () {
-        $('body').html(template_with_content); //set content, politely using jQuery's html, will not work w/ innerHTML..
-      })
-    })
-      .fail(function () {
-        $('body').html("<h1>ERROR</h1>"); //set content, politely using jQuery's html, will not work w/ innerHTML..
-      })
-      .always(function () {
-        document.querySelector('html').style.display = ""; //makes all visible again.
-      });
+//
+//    $.ajaxSetup({
+//      async: true
+//    });
+//    $.get('_to_dom.txt', function (data) {
+//      "use strict";
+//      var data, files, template, template_with_content;
+//
+//      data = JSON.parse(JXG.decompress(data));
+//
+//      files = JSON.parse(data.files);
+//      template = data.template;
+//
+//      template_with_content = Handlebars.compile(template); //let handlebars process the raw template.
+//      template_with_content = template_with_content(files); //embedd the data into the template.
+//
+//      $(document).ready(function () {
+//        $('body').html(template_with_content); //set content, politely using jQuery's html, will not work w/ innerHTML..
+//      })
+//    })
+//      .fail(function () {
+//        $('body').html("<h1>ERROR</h1>"); //set content, politely using jQuery's html, will not work w/ innerHTML..
+//      })
+//      .always(function () {
+//        document.querySelector('html').style.display = ""; //makes all visible again.
+//      });
 
   </script>
 </head>
