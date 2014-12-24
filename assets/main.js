@@ -1,90 +1,99 @@
-(function (window) {
+/**
+ * maintain "every APK has a JSON-data file" status.
+ *   - listing APKs is done by calling:  list_apks.php (it shows which ones has/has no JSON, and sums if everyone has JSON: true/false-- for speedy check..).
+ *   - ACTIVE: for each APK, generating JSON with the details analayzed by the APK is done by calling anlz_apk?file=______  -> generated ./resources/______.apk.json.
+ *   - * every
+ */
+(function (window, unzip, log) {
   "use strict";
-  var
-    unzip = function (zipped_data) {
-      return JSON.parse(JXG.decompress(zipped_data));
+
+  function template_handle(template, data) {
+    template = Handlebars.compile(template); //let handlebars process the raw template.
+    template = template(data); //embed the DATA into the template.
+
+    $('body').html(template);
+  }
+
+  function all_json(data) {
+    var template;
+
+    data = unzip(data);
+
+    data = {'files': data}; //re-format the data, for easier HANDLEBARS management (mostly initial loop..)
+
+
+    template = $.jStorage.get("template");
+    if (!template) {
+      log("fetching template from remote-resource.");
+      $.get('index.mustache.php', {'small': true, 'zip': true}).done(function (template) {
+        template = unzip(template);
+        $.jStorage.set("template", template);
+
+        template_handle.call(this, template.html, data);
+      }); //done once..
+    } else {
+      log("taking template from local-storage.");
+      template_handle.call(this, template.html, data);
     }
-    ;
+  }
 
-  window.num = 0;
-  window.collected_data = [];
+  function is_done_check(data) {
+    setTimeout(function () { //timeout helps preventing.. something...
 
-  $.get('list.php', {
-    'small': true,
-    'zip':   true
-  }).done(function (files_data) {
-    files_data = unzip(files_data.zip);
+      if (true === unzip(data).is_all_have_json)
+        $.get('all_json.php', {'small': true, 'zip': true}).done(all_json); //done once..
 
-    window.num = files_data.length;
+    }, 50);
+  }
 
-    $.each(files_data, function (index, element) {
-      $.get('anlz.php', {
-        'file': './resources/' + element,
-        'small': true,
-        'zip':   true
-      }).done(function (anlz_data) {
-        anlz_data = unzip(anlz_data.zip);
+  function anlz_apk(data) {
+    $.get('list_apks.php', {'small': true, 'zip': true}).done(is_done_check); //list_apks.php - json for all?
+  }
 
-        window.collected_data.push(anlz_data);
-        window.num -= 1;
+  function each_anlz(index, element) {
+    $.get('anlz_apk.php', {'small': true, 'zip': true, 'nodata': true, 'file': element}).done(anlz_apk); //anlz_apk - creates jsons
+  }
 
-        if (0 === window.num) {
-          //time for template'ing..
+  function all_unprocessed_apks(data) {
+    //if all JSON files already generated the following will run 0 times.
+    $.each(unzip(data).packages_without_json, each_anlz); //each apk
 
+    //so we can skip ahead and check "anyway", "if done?"
+    is_done_check(data);
+  }
 
-          //get template, compile it on dom, embedd data in it.
-          $.get('index.mustache.html')
-            .done(function (template_data) {
-              window.collected_data = {'files': window.collected_data}; //easier for mustache / handlebars to have all under sub-key named 'files'.
+  //start here
+  (function () {
+    $.get('list_apks.php', {
+      'small': true,
+      'zip':   true
+    }).done(all_unprocessed_apks); //list_apks.php - packages_without_json
+  }());
 
-              //the items are shown in the dashboard as "name space left brack filename right brack", compare function will act as same pattern.
-              window.collected_data.files.sort(function (a, b) { //ordered by package, for presentation in dashboard.
-                a = a.name + " (" + a.filename + ")";
-                b = b.name + " (" + b.filename + ")";
-                return a < b ? -1 : a > b ? 1 : 0;
-              });
+}(
+  window,
+  /**
+   * UNZIP :: FUNCTION relays on jsxcompressor.min.js
+   * wrap for JXG.decompress,
+   * with support for my implementation of zipped data storage format {'zip':'......'}
+   *
+   * @param   {string} data - text based64 of binary gzipped compressed data.
+   * @return  {string}
+   */
+  function (data) {
+    if ("undefined" !== typeof data.zip)
+      data = data.zip;
 
-              window.template = Handlebars.compile(template_data); //let handlebars process the raw template.
-              window.template = window.template(window.collected_data); //embedd the data into the template.
+    return JSON.parse(JXG.decompress(data));
+  },
 
-              $(document).ready(function () {
-                $('body').html(window.template); //set content, politely using jQuery's html, will not work w/ innerHTML..
-                document.querySelector('html').style.cssText = "";
-              });
-
-            });
-
-
-        }
-      });
-    });
-  });
-
-
-//
-//  /*
-//   * load page's template
-//   */
-//  $.get('index.mustache.html', function (data) {
-//    var template;
-//    template = Handlebars.compile(data); //let handlebars process the raw template.
-//    //template = template(files); //embedd the data into the template.
-//  });
-
-//
-//  $.when(
-//    $.getJSON('file_list.php', function (data) {
-//      $(data.has_no_json).each(function (index, element) { //render for missing
-//        $.getJSON('file_data.php?file=' + element);
-//      });
-//    })
-//  )
-//    .then(function () {
-//      setTimeout(function () {
-//        $.getJSON('file_list.php', function (data) {
-//          console.log(data);
-//        });
-//
-//      }, 20);
-//    });
-}(window));
+  /**
+   * LOG :: Function to wrap-around console.log
+   * @param  {string} string
+   * @return {string}
+   */
+  function (string) {
+    console.log(string);
+    return string;
+  }
+));

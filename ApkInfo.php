@@ -19,31 +19,19 @@
    *
    * @return mixed
    */
-  function getApkFileInfo($fileFullPath, $is_dump_images_to_files = false, $is_dump_json_data_to_json = false, $is_force_overwrite_json = false, $is_keep_base64_images = false) {
+  function getApkFileInfo($fileFullPath,
+                          $is_dump_images_to_files = false,
+                          $is_dump_json_data_to_json = false,
+                          $is_force_overwrite_json = false,
+                          $is_keep_base64_images = false) {
 
-    //APK external (the APK file) information
-    $info = pathinfo($fileFullPath); //[dirname] => ./resources | [basename] => com.google.android.youtube-5.17.6-51706300-minAPI15.apk | [extension] => apk | [filename] => com.google.android.youtube-5.17.6-51706300-minAPI15
+    //generic pathinfo with more data
+    $info = pathinfo_extended($fileFullPath);
 
-    $info["basename_escape"] = rawurlencode($info["basename"]);
 
+    //APK-Package specific data, and images.
     $f = $info["dirname"] . '/' . $info["basename"];
 
-    $info["size"] = filesize($f);
-    $info["size_human_readable"] = human_readable_bytes_size($info["size"]);
-
-    $time = time();
-    //unix time of file's last-access, file creation time, file's last-modification time.
-    $info['datetime_file_access'] = @fileatime($f) || $time;
-    $info['datetime_file_creation'] = @filectime($f) || $time;
-    $info['datetime_file_modification'] = @filemtime($f) || $time;
-
-    //human readable format of the same from above ("3 hours ago", or if time signature was fiddle with it may be "will be in 3 hours")
-    $info['datetime_file_access_human_readable'] = human_time_diff(@fileatime($f), $time);
-    $info['datetime_file_creation_human_readable'] = human_time_diff(@filectime($f), $time);
-    $info['datetime_file_modification_human_readable'] = human_time_diff(@filemtime($f), $time);
-
-
-    //APK internal (the APK package) information
     try {
       $parser = new ApkParser();
       $parser->open($f);
@@ -82,6 +70,36 @@
   }
 
 
+  function pathinfo_extended($fileFullPath = '') {
+
+    if (empty($fileFullPath) || false === @file_exists($fileFullPath)) return [];
+
+
+    //APK external (the APK file) information
+    $info = pathinfo($fileFullPath); //[dirname] => ./resources | [basename] => com.google.android.youtube-5.17.6-51706300-minAPI15.apk | [extension] => apk | [filename] => com.google.android.youtube-5.17.6-51706300-minAPI15
+
+    $info["basename_escape"] = rawurlencode($info["basename"]);
+
+    $f = $info["dirname"] . '/' . $info["basename"];
+
+    $info["size"] = filesize($f);
+    $info["size_human_readable"] = human_readable_bytes_size($info["size"]);
+
+    $time = time();
+    //unix time of file's last-access, file creation time, file's last-modification time.
+    $info['datetime_file_access'] = @fileatime($f) || $time;
+    $info['datetime_file_creation'] = @filectime($f) || $time;
+    $info['datetime_file_modification'] = @filemtime($f) || $time;
+
+    //human readable format of the same from above ("3 hours ago", or if time signature was fiddle with it may be "will be in 3 hours")
+    $info['datetime_file_access_human_readable'] = human_time_diff(@fileatime($f), $time);
+    $info['datetime_file_creation_human_readable'] = human_time_diff(@filectime($f), $time);
+    $info['datetime_file_modification_human_readable'] = human_time_diff(@filemtime($f), $time);
+
+
+    return $info;
+  }
+
   /**
    * write a json-like object to file
    *
@@ -90,11 +108,11 @@
    * @param bool $force_overwrite (default=false) if true will always write new content
    */
   function json_object_to_file($data, $filename_path, $force_overwrite = false) {
-    if (true === @file_exists($filename_path) && false === $force_overwrite) return;
+    $is_should_write = (!@file_exists($filename_path)) || (!$force_overwrite);
 
-    $data = toJSON($data); //convert an object to json-like text content.
-
-    @file_put_contents($filename_path, $data); //write data to json file
+    if ($is_should_write) {
+      @file_put_contents($filename_path, toJSON($data)); //write data to json file
+    }
   }
 
 

@@ -41,6 +41,7 @@ if (!isset($_SESSION['uniqueID'])) {
 
   <script src="assets/jsxcompressor.min.js"></script>
   <script src="assets/jquery-1.10.2.min.js"></script>
+  <script src="assets/jstorage.min.js"></script>
   <!--  <script src="assets/mustache.min.js"></script>-->
   <script src="assets/handlebars.min.js"></script>
   <script src="assets/handlebars_helpers.js"></script>
