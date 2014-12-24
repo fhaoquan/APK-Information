@@ -8,6 +8,13 @@
   "use strict";
 
   function template_handle(template, data) {
+    data.files.sort(function (a, b) { //ordered by package, for presentation in dashboard.
+      a = a.name + " (" + a.filename + ")";
+      b = b.name + " (" + b.filename + ")";
+      return a < b ? -1 : a > b ? 1 : 0;
+    });
+    
+
     template = Handlebars.compile(template); //let handlebars process the raw template.
     template = template(data); //embed the DATA into the template.
 
