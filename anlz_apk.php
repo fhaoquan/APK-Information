@@ -8,16 +8,17 @@
 
   //---------------------------------------------------------------------------------------------------- user arguments.
   $file = isset($_REQUEST['file']) ? './resources/' . $_REQUEST['file'] : ''; //                        mandatory.
+  $is_small = isset($_REQUEST['small']) && (mb_strtolower((string)$_REQUEST['small']) !== 'false'); //this way ?small === ?small=true by not ?small=false
+  $is_zip = isset($_REQUEST['zip']) && (mb_strtolower((string)$_REQUEST['zip']) !== 'false');
+  $is_no_data = isset($_REQUEST['nodata']) && (mb_strtolower((string)$_REQUEST['nodata']) !== 'false');
+  $is_force_overwrite = isset($_REQUEST['force']) && (mb_strtolower((string)$_REQUEST['force']) !== 'false');
+  //-------------------------------------------------------------------------------------------------------------------
+
   $file_exist = (mb_strlen($file) >= 3) && (false !== strpos($file, 'apk')) && file_exists($file);
 
   $file_json = $file . '.json';
   $file_json_exist = (mb_strlen($file) >= 3) && file_exists($file_json);
 
-  $is_small = isset($_REQUEST['small']);
-  $is_zip = isset($_REQUEST['zip']);
-  $is_no_data = isset($_REQUEST['nodata']);
-  $is_force_overwrite = isset($_REQUEST['force']);
-  //----------------------------------------------------------------------------------------------------
   if (!$file_exist) {
     http_response_code(501);
 

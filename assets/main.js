@@ -13,7 +13,7 @@
       b = b.name + " (" + b.filename + ")";
       return a < b ? -1 : a > b ? 1 : 0;
     });
-    
+
 
     template = Handlebars.compile(template); //let handlebars process the raw template.
     template = template(data); //embed the DATA into the template.
@@ -23,32 +23,87 @@
 
   function all_json(data) {
     var template;
-
     data = unzip(data);
 
     data = {'files': data}; //re-format the data, for easier HANDLEBARS management (mostly initial loop..)
 
+    $.get('index.mustache.php', {'small': true, 'zip': true}).done(function (template) {
+      template = unzip(template);
+      //$.jStorage.set("template", template);
 
-    template = $.jStorage.get("template");
-    if (!template) {
-      log("fetching template from remote-resource.");
-      $.get('index.mustache.php', {'small': true, 'zip': true}).done(function (template) {
-        template = unzip(template);
-        $.jStorage.set("template", template);
-
-        template_handle.call(this, template.html, data);
-      }); //done once..
-    } else {
-      log("taking template from local-storage.");
       template_handle.call(this, template.html, data);
-    }
+    }); //done once..
+//
+//    template = $.jStorage.get("template");
+//    if (!template) {
+//      log("fetching template from remote-resource.");
+//      $.get('index.mustache.php', {'small': true, 'zip': true}).done(function (template) {
+//        template = unzip(template);
+//        $.jStorage.set("template", template);
+//
+//        template_handle.call(this, template.html, data);
+//      }); //done once..
+//    } else {
+//      log("taking template from local-storage.");
+//      template_handle.call(this, template.html, data);
+//    }
   }
 
+
+  /**
+   * try to lower the server-side CPU + Memory consumption,
+   * request can fetch fewer files, based on naming,
+   *   abcdef   -> a-f
+   *   ghijkl   -> g-l
+   *   mnopqr   -> m-r
+   *   stuvwxyz -> s-z
+   *
+   * what happens in the server-side when using 'prefix=[a-f]' ?
+   * ----- at 'all_json.php' only files matches /^[a-f].*\.json$/i contents is being read..
+   */
   function is_done_check(data) {
     setTimeout(function () { //timeout helps preventing.. something...
 
-      if (true === unzip(data).is_all_have_json)
-        $.get('all_json.php', {'small': true, 'zip': true}).done(all_json); //done once..
+      if (true === unzip(data).is_all_have_json) {
+//        $.when(
+//          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[a-f]'}),
+//          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[g-l]'}),
+//          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[m-r]'}),
+//          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[s-z]'})
+//        )
+//          .done(function () {
+//            var files = [];
+//
+//            $.each(arguments, function (index, element) {
+//              $.each(element[0], function (index, element) {
+//                files.push(element);
+//              })
+//            });
+//
+//            all_json(files);
+//          });
+
+        $.when(
+          $.get('all_json.php', {'small': true, 'zip': true, 'prefix': '[a-f]'}),
+          $.get('all_json.php', {'small': true, 'zip': true, 'prefix': '[g-l]'}),
+          $.get('all_json.php', {'small': true, 'zip': true, 'prefix': '[m-r]'}),
+          $.get('all_json.php', {'small': true, 'zip': true, 'prefix': '[s-z]'})
+        )
+          .done(function () {
+            var files = [];
+
+            $.each(arguments, function (index, element) {
+              element = unzip(element[0]); //compatible! if you use zip:true or either zip:false
+
+              $.each(element, function (index, element) {
+                files.push(element);
+              })
+            });
+
+            all_json(files);
+          });
+
+      }
 
     }, 50);
   }
@@ -80,18 +135,12 @@
 }(
   window,
   /**
-   * UNZIP :: FUNCTION relays on jsxcompressor.min.js
-   * wrap for JXG.decompress,
-   * with support for my implementation of zipped data storage format {'zip':'......'}
-   *
-   * @param   {string} data - text based64 of binary gzipped compressed data.
-   * @return  {string}
+   * wrap around the JXG decompression,
+   * @param data   - if data has .zip its compressed, otherwise just return same.
+   * @return {*}
    */
   function (data) {
-    if ("undefined" !== typeof data.zip)
-      data = data.zip;
-
-    return JSON.parse(JXG.decompress(data));
+    return ("undefined" !== typeof data['zip']) ? JSON.parse(JXG.decompress(data.zip)) : data;
   },
 
   /**

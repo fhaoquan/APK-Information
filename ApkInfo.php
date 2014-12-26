@@ -86,10 +86,12 @@
     $info["size_human_readable"] = human_readable_bytes_size($info["size"]);
 
     $time = time();
+
+
     //unix time of file's last-access, file creation time, file's last-modification time.
-    $info['datetime_file_access'] = @fileatime($f) || $time;
-    $info['datetime_file_creation'] = @filectime($f) || $time;
-    $info['datetime_file_modification'] = @filemtime($f) || $time;
+    $info['datetime_file_access'] = date("F d Y H:i:s.", fileatime($f) || $time);
+    $info['datetime_file_creation'] = date("F d Y H:i:s.", filectime($f) || $time);
+    $info['datetime_file_modification'] = date("F d Y H:i:s.", filemtime($f) || $time);
 
     //human readable format of the same from above ("3 hours ago", or if time signature was fiddle with it may be "will be in 3 hours")
     $info['datetime_file_access_human_readable'] = human_time_diff(@fileatime($f), $time);
@@ -226,16 +228,26 @@
   }
 
   function files_in($base_folder_path, $included_ext) {
-    $iterator = new FilesystemIterator($base_folder_path);
-    $filter = new RegexIterator($iterator, $included_ext);
     $files = [];
-    foreach ($filter as $entry)
-      array_push($files, ((string)$entry->getFilename()));
+
+    //cheap directory listing (no iterator needed)
+    $directory = @opendir($base_folder_path);
+
+    while ($file = readdir($directory)) {
+      if ($file === "." || $file === "..") continue;
+      array_push($files, $file);
+    }
+
+    @closedir($directory);
 
     uksort($files, "strnatcasecmp");
 
-    return $files;
+    $matched = [];
+
+    foreach ($files as $file) {
+      if (!preg_match($included_ext, $file)) continue;
+      array_push($matched, $file);
+    }
+
+    return $matched;
   }
-
-
-?>
