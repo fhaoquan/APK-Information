@@ -26,27 +26,27 @@
     data = unzip(data);
 
     data = {'files': data}; //re-format the data, for easier HANDLEBARS management (mostly initial loop..)
-
-    $.get('index.mustache.php', {'small': true, 'zip': true}).done(function (template) {
-      template = unzip(template);
-      //$.jStorage.set("template", template);
-
-      template_handle.call(this, template.html, data);
-    }); //done once..
 //
-//    template = $.jStorage.get("template");
-//    if (!template) {
-//      log("fetching template from remote-resource.");
-//      $.get('index.mustache.php', {'small': true, 'zip': true}).done(function (template) {
-//        template = unzip(template);
-//        $.jStorage.set("template", template);
+//    $.get('index.mustache.php', {'small': true, 'zip': true}).done(function (template) {
+//      template = unzip(template);
+//      //$.jStorage.set("template", template);
 //
-//        template_handle.call(this, template.html, data);
-//      }); //done once..
-//    } else {
-//      log("taking template from local-storage.");
 //      template_handle.call(this, template.html, data);
-//    }
+//    }); //done once..
+
+    template = $.jStorage.get("template");
+    if (!template) {
+      log("fetching template from remote-resource.");
+      $.get('index.mustache.php', {'small': true, 'zip': true}).done(function (template) {
+        template = unzip(template);
+        $.jStorage.set("template", template);
+
+        template_handle.call(this, template.html, data);
+      }); //done once..
+    } else {
+      log("taking template from local-storage.");
+      template_handle.call(this, template.html, data);
+    }
   }
 
 
@@ -65,24 +65,6 @@
     setTimeout(function () { //timeout helps preventing.. something...
 
       if (true === unzip(data).is_all_have_json) {
-//        $.when(
-//          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[a-f]'}),
-//          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[g-l]'}),
-//          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[m-r]'}),
-//          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[s-z]'})
-//        )
-//          .done(function () {
-//            var files = [];
-//
-//            $.each(arguments, function (index, element) {
-//              $.each(element[0], function (index, element) {
-//                files.push(element);
-//              })
-//            });
-//
-//            all_json(files);
-//          });
-
         $.when(
           $.get('all_json.php', {'small': true, 'zip': true, 'prefix': '[a-f]'}),
           $.get('all_json.php', {'small': true, 'zip': true, 'prefix': '[g-l]'}),
