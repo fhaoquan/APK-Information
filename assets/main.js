@@ -27,7 +27,7 @@
 
     data = {'files': data}; //re-format the data, for easier HANDLEBARS management (mostly initial loop..)
 //
-//    $.get('index.mustache.php', {'small': true, 'zip': true}).done(function (template) {
+//    $.get('index.mustache.php', {'small': true, 'zip': false}).done(function (template) {
 //      template = unzip(template);
 //      //$.jStorage.set("template", template);
 //
@@ -37,7 +37,7 @@
     template = $.jStorage.get("template");
     if (!template) {
       log("fetching template from remote-resource.");
-      $.get('index.mustache.php', {'small': true, 'zip': true}).done(function (template) {
+      $.get('index.mustache.php', {'small': true, 'zip': false}).done(function (template) {
         template = unzip(template);
         $.jStorage.set("template", template);
 
@@ -53,10 +53,15 @@
   /**
    * try to lower the server-side CPU + Memory consumption,
    * request can fetch fewer files, based on naming,
-   *   abcdef   -> a-f
-   *   ghijkl   -> g-l
-   *   mnopqr   -> m-r
-   *   stuvwxyz -> s-z
+   *   abc   -> a-c
+   *   def   -> d-f
+   *   ghi   -> g-i
+   *   jkl   -> j-l
+   *   mno   -> m-o
+   *   pqr   -> p-r
+   *   st    -> s-t
+   *   uv    -> u-v
+   *   wxyz  -> w-z
    *
    * what happens in the server-side when using 'prefix=[a-f]' ?
    * ----- at 'all_json.php' only files matches /^[a-f].*\.json$/i contents is being read..
@@ -66,10 +71,15 @@
 
       if (true === unzip(data).is_all_have_json) {
         $.when(
-          $.get('all_json.php', {'small': true, 'zip': true, 'prefix': '[a-f]'}),
-          $.get('all_json.php', {'small': true, 'zip': true, 'prefix': '[g-l]'}),
-          $.get('all_json.php', {'small': true, 'zip': true, 'prefix': '[m-r]'}),
-          $.get('all_json.php', {'small': true, 'zip': true, 'prefix': '[s-z]'})
+          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[a-c]'}),
+          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[d-f]'}),
+          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[g-i]'}),
+          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[j-l]'}),
+          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[m-o]'}),
+          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[p-r]'}),
+          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[s-t]'}),
+          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[u-v]'}),
+          $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[w-z]'})
         )
           .done(function () {
             var files = [];
@@ -91,11 +101,11 @@
   }
 
   function anlz_apk(data) {
-    $.get('list_apks.php', {'small': true, 'zip': true}).done(is_done_check); //list_apks.php - json for all?
+    $.get('list_apks.php', {'small': true, 'zip': false}).done(is_done_check); //list_apks.php - json for all?
   }
 
   function each_anlz(index, element) {
-    $.get('anlz_apk.php', {'small': true, 'zip': true, 'nodata': true, 'file': element}).done(anlz_apk); //anlz_apk - creates jsons
+    $.get('anlz_apk.php', {'small': true, 'zip': false, 'nodata': true, 'file': element}).done(anlz_apk); //anlz_apk - creates jsons
   }
 
   function all_unprocessed_apks(data) {
