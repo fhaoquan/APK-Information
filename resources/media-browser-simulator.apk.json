@@ -6,12 +6,12 @@
     "basename_escape": "media-browser-simulator.apk",
     "size": 1308922,
     "size_human_readable": "1.25MB",
-    "datetime_file_access": true,
-    "datetime_file_creation": true,
-    "datetime_file_modification": true,
-    "datetime_file_access_human_readable": "was 3 weeks ago",
-    "datetime_file_creation_human_readable": "was 3 weeks ago",
-    "datetime_file_modification_human_readable": "was 1 month ago",
+    "datetime_file_access": "January 01 1970 02:00:01.",
+    "datetime_file_creation": "January 01 1970 02:00:01.",
+    "datetime_file_modification": "January 01 1970 02:00:01.",
+    "datetime_file_access_human_readable": "was 1 month ago",
+    "datetime_file_creation_human_readable": "was 1 month ago",
+    "datetime_file_modification_human_readable": "was 2 months ago",
     "name": "com.google.android.mediasimulator",
     "version": "6.5.81 (1593596-030)",
     "vercode": 6581030,
@@ -30,6 +30,22 @@
     "hardware_features": [],
     "images": [
         {
+            "width": 144,
+            "height": 144,
+            "channels": "RGB",
+            "bits_for_each_color": 8,
+            "mime_type": "image\/png",
+            "mime_type_ext": "png",
+            "base64_prefix": "data:image\/png;base64,",
+            "path": "res\/drawable-xxhdpi-v4\/ic_launcher_auto_media.png",
+            "path_filename": {
+                "dirname": ".\/resources",
+                "basename": "media-browser-simulator.apk_144x144.png",
+                "extension": "png",
+                "filename": "media-browser-simulator.apk_144x144"
+            }
+        },
+        {
             "width": 96,
             "height": 96,
             "channels": "RGB",
@@ -37,12 +53,44 @@
             "mime_type": "image\/png",
             "mime_type_ext": "png",
             "base64_prefix": "data:image\/png;base64,",
-            "path": "*external_default*",
+            "path": "res\/drawable-xhdpi-v4\/ic_launcher_auto_media.png",
             "path_filename": {
                 "dirname": ".\/resources",
                 "basename": "media-browser-simulator.apk_96x96.png",
                 "extension": "png",
                 "filename": "media-browser-simulator.apk_96x96"
+            }
+        },
+        {
+            "width": 72,
+            "height": 72,
+            "channels": "RGB",
+            "bits_for_each_color": 8,
+            "mime_type": "image\/png",
+            "mime_type_ext": "png",
+            "base64_prefix": "data:image\/png;base64,",
+            "path": "res\/drawable-hdpi-v4\/ic_launcher_auto_media.png",
+            "path_filename": {
+                "dirname": ".\/resources",
+                "basename": "media-browser-simulator.apk_72x72.png",
+                "extension": "png",
+                "filename": "media-browser-simulator.apk_72x72"
+            }
+        },
+        {
+            "width": 48,
+            "height": 48,
+            "channels": "RGB",
+            "bits_for_each_color": 8,
+            "mime_type": "image\/png",
+            "mime_type_ext": "png",
+            "base64_prefix": "data:image\/png;base64,",
+            "path": "res\/drawable-mdpi-v4\/ic_launcher_auto_media.png",
+            "path_filename": {
+                "dirname": ".\/resources",
+                "basename": "media-browser-simulator.apk_48x48.png",
+                "extension": "png",
+                "filename": "media-browser-simulator.apk_48x48"
             }
         }
     ],

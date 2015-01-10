@@ -6,12 +6,12 @@
     "basename_escape": "FDroid.apk",
     "size": 3194129,
     "size_human_readable": "3.05MB",
-    "datetime_file_access": true,
-    "datetime_file_creation": true,
-    "datetime_file_modification": true,
-    "datetime_file_access_human_readable": "was 3 weeks ago",
-    "datetime_file_creation_human_readable": "was 3 weeks ago",
-    "datetime_file_modification_human_readable": "was 3 weeks ago",
+    "datetime_file_access": "January 01 1970 02:00:01.",
+    "datetime_file_creation": "January 01 1970 02:00:01.",
+    "datetime_file_modification": "January 01 1970 02:00:01.",
+    "datetime_file_access_human_readable": "was 1 month ago",
+    "datetime_file_creation_human_readable": "was 1 month ago",
+    "datetime_file_modification_human_readable": "was 1 month ago",
     "name": "org.fdroid.fdroid",
     "version": 0.76,
     "vercode": 760,
@@ -51,6 +51,22 @@
         }
     ],
     "images": [
+        {
+            "width": 144,
+            "height": 144,
+            "channels": "RGB",
+            "bits_for_each_color": 8,
+            "mime_type": "image\/png",
+            "mime_type_ext": "png",
+            "base64_prefix": "data:image\/png;base64,",
+            "path": "res\/drawable-xxhdpi\/ic_launcher.png",
+            "path_filename": {
+                "dirname": ".\/resources",
+                "basename": "FDroid.apk_144x144.png",
+                "extension": "png",
+                "filename": "FDroid.apk_144x144"
+            }
+        },
         {
             "width": 96,
             "height": 96,

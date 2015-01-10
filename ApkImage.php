@@ -15,31 +15,98 @@
       $icon_paths = [
         //ordered by groups of quality, highest on top, from each per, the mipmap is better, at last, placed two old formats.
         'res/mipmap-xxxhdpi/ic_launcher.png',           // 192x192 pixels                 - used in google or new packages
-        'res/mipmap-xxhdpi/ic_launcher.png',            // 144x144 pixels                 - used in google or new packages
         'res/mipmap-xxxhdpi/icon.png',                  // alternative name: 192x192 pixels                 - used in google or new packages
-        'res/mipmap-xxhdpi/icon.png',                   // alternative name: 144x144 pixels                 - used in google or new packages
+        'res/mipmap-xxxhdpi/app_icon.png',                  // alternative name: 192x192 pixels                 - used in google or new packages
+        'res/drawable-xxxhdpi/ic_launcher.png',         // 192x192 pixels (not constant..)  - used in most packages
+        'res/drawable-xxxhdpi/icon.png',                // 192x192 pixels (not constant..)  - used in most packages
+        'res/drawable-xxxhdpi/app_icon.png',                // 192x192 pixels (not constant..)  - used in most packages
 
-        'res/mipmap-xhdpi/ic_launcher.png',             // 96x96 pixels                   - used in google or new packages
-        'res/drawable-xhdpi/ic_launcher.png',           // 96x96 pixels (not constant..)  - used in most packages
-        'res/mipmap-xhdpi/icon.png',                    // alternative name: 96x96 pixels                   - used in google or new packages
-        'res/drawable-xhdpi/icon.png',                  // alternative name: 96x96 pixels (not constant..)  - used in most packages
+        'res/drawable-xxhdpi/ic_launcher.png',               // 144x144 pixels (not constant..)  - used in most packages
+        'res/mipmap-xxhdpi/icon.png',                        // 144x144 pixels                - used in google or new packages
+        'res/mipmap-xxhdpi/app_icon.png',                    // 144x144 pixels                - used in google or new packages
+        'res/drawable-xxhdpi/icon.png',                      // 144x144 pixels (not constant..)  - used in most packages
+        'res/drawable-xxhdpi/app_icon.png',                  // 144x144 pixels (not constant..)  - used in most packages
+        'res/mipmap-xxhdpi/ic_launcher.png',                 // 144x144 pixels                - used in google or new packages
+        'res/drawable-xxhdpi-v0/ic_launcher_auto_media.png', // 144x144 pixels                                   - used in packages that has version appended
+        'res/drawable-xxhdpi-v1/ic_launcher_auto_media.png', // 144x144 pixels                                   - used in packages that has version appended
+        'res/drawable-xxhdpi-v2/ic_launcher_auto_media.png', // 144x144 pixels                                   - used in packages that has version appended
+        'res/drawable-xxhdpi-v3/ic_launcher_auto_media.png', // 144x144 pixels                                   - used in packages that has version appended
+        'res/drawable-xxhdpi-v4/ic_launcher_auto_media.png', // 144x144 pixels                                   - used in packages that has version appended
+        'res/drawable-xxhdpi-v5/ic_launcher_auto_media.png', // 144x144 pixels                                   - used in packages that has version appended
+        'res/drawable-xxhdpi-v0/ic_launcher_auto_messaging.png',  // 144x144 pixels         - used in custom-packages that has version appended
+        'res/drawable-xxhdpi-v1/ic_launcher_auto_messaging.png',  // 144x144 pixels         - used in custom-packages that has version appended
+        'res/drawable-xxhdpi-v2/ic_launcher_auto_messaging.png',  // 144x144 pixels         - used in custom-packages that has version appended
+        'res/drawable-xxhdpi-v3/ic_launcher_auto_messaging.png',  // 144x144 pixels         - used in custom-packages that has version appended
+        'res/drawable-xxhdpi-v4/ic_launcher_auto_messaging.png',  // 144x144 pixels         - used in custom-packages that has version appended
+        'res/drawable-xxhdpi-v5/ic_launcher_auto_messaging.png',  // 144x144 pixels         - used in custom-packages that has version appended
 
-        'res/mipmap-hdpi/ic_launcher.png',              // 72x72 pixels                   - used in google or new packages
-        'res/drawable-hdpi/ic_launcher.png',            // 72x72 pixels (not constant..)  - used in most packages
-        'res/mipmap-hdpi/icon.png',                     // alternative name: 72x72 pixels                   - used in google or new packages
-        'res/drawable-hdpi/icon.png',                   // alternative name: 72x72 pixels (not constant..)  - used in most packages
+        'res/mipmap-xhdpi/ic_launcher.png',                 // 96x96 pixels                   - used in google or new packages
+        'res/drawable-xhdpi/ic_launcher.png',               // 96x96 pixels (not constant..)  - used in most packages
+        'res/mipmap-xhdpi/icon.png',                        // alternative name: 96x96 pixels                   - used in google or new packages
+        'res/mipmap-xhdpi/app_icon.png',                    // alternative name: 96x96 pixels                   - used in google or new packages
+        'res/drawable-xhdpi/icon.png',                      // alternative name: 96x96 pixels (not constant..)  - used in most packages
+        'res/drawable-xhdpi/app_icon.png',                  // alternative name: 96x96 pixels (not constant..)  - used in most packages
+        'res/drawable-xhdpi-v0/ic_launcher_auto_media.png', // 96x96 pixels                                     - used in packages that has version appended
+        'res/drawable-xhdpi-v1/ic_launcher_auto_media.png', // 96x96 pixels                                     - used in packages that has version appended
+        'res/drawable-xhdpi-v2/ic_launcher_auto_media.png', // 96x96 pixels                                     - used in packages that has version appended
+        'res/drawable-xhdpi-v3/ic_launcher_auto_media.png', // 96x96 pixels                                     - used in packages that has version appended
+        'res/drawable-xhdpi-v4/ic_launcher_auto_media.png', // 96x96 pixels                                     - used in packages that has version appended
+        'res/drawable-xhdpi-v5/ic_launcher_auto_media.png', // 96x96 pixels                                     - used in packages that has version appended
+        'res/drawable-xhdpi-v0/ic_launcher_auto_messaging.png',  // 96x96 pixels         - used in custom-packages that has version appended
+        'res/drawable-xhdpi-v1/ic_launcher_auto_messaging.png',  // 96x96 pixels         - used in custom-packages that has version appended
+        'res/drawable-xhdpi-v2/ic_launcher_auto_messaging.png',  // 96x96 pixels         - used in custom-packages that has version appended
+        'res/drawable-xhdpi-v3/ic_launcher_auto_messaging.png',  // 96x96 pixels         - used in custom-packages that has version appended
+        'res/drawable-xhdpi-v4/ic_launcher_auto_messaging.png',  // 96x96 pixels         - used in custom-packages that has version appended
+        'res/drawable-xhdpi-v5/ic_launcher_auto_messaging.png',  // 96x96 pixels         - used in custom-packages that has version appended
 
-        'res/mipmap-mdpi/ic_launcher.png',              // 48x48 pixels                   - used in google or new packages
-        'res/drawable-mdpi/ic_launcher.png',            // 48x48 pixels (not constant..)  - used in most packages
-        'res/mipmap-mdpi/icon.png',                     // alternative name: 48x48 pixels                   - used in google or new packages
-        'res/drawable-mdpi/icon.png',                   // alternative name: 48x48 pixels (not constant..)  - used in most packages
+        'res/mipmap-hdpi/ic_launcher.png',                  // 72x72 pixels                   - used in google or new packages
+        'res/drawable-hdpi/ic_launcher.png',                // 72x72 pixels (not constant..)  - used in most packages
+        'res/mipmap-hdpi/icon.png',                         // alternative name: 72x72 pixels                   - used in google or new packages
+        'res/mipmap-hdpi/app_icon.png',                     // alternative name: 72x72 pixels                   - used in google or new packages
+        'res/drawable-hdpi/icon.png',                       // alternative name: 72x72 pixels (not constant..)  - used in most packages
+        'res/drawable-hdpi/app_icon.png',                   // alternative name: 72x72 pixels (not constant..)  - used in most packages
+        'res/drawable-hdpi-v0/ic_launcher_auto_media.png',      // 72x72 pixels         - used in packages that has version appended
+        'res/drawable-hdpi-v1/ic_launcher_auto_media.png',      // 72x72 pixels         - used in packages that has version appended
+        'res/drawable-hdpi-v2/ic_launcher_auto_media.png',      // 72x72 pixels         - used in packages that has version appended
+        'res/drawable-hdpi-v3/ic_launcher_auto_media.png',      // 72x72 pixels         - used in packages that has version appended
+        'res/drawable-hdpi-v4/ic_launcher_auto_media.png',      // 72x72 pixels         - used in packages that has version appended
+        'res/drawable-hdpi-v5/ic_launcher_auto_media.png',      // 72x72 pixels         - used in packages that has version appended
+        'res/drawable-hdpi-v0/ic_launcher_auto_messaging.png',  // 72x72 pixels         - used in custom-packages that has version appended
+        'res/drawable-hdpi-v1/ic_launcher_auto_messaging.png',  // 72x72 pixels         - used in custom-packages that has version appended
+        'res/drawable-hdpi-v2/ic_launcher_auto_messaging.png',  // 72x72 pixels         - used in custom-packages that has version appended
+        'res/drawable-hdpi-v3/ic_launcher_auto_messaging.png',  // 72x72 pixels         - used in custom-packages that has version appended
+        'res/drawable-hdpi-v4/ic_launcher_auto_messaging.png',  // 72x72 pixels         - used in custom-packages that has version appended
+        'res/drawable-hdpi-v5/ic_launcher_auto_messaging.png',  // 72x72 pixels         - used in custom-packages that has version appended
+
+        'res/mipmap-mdpi/ic_launcher.png',                  // 48x48 pixels                   - used in google or new packages
+        'res/drawable-mdpi/ic_launcher.png',                // 48x48 pixels (not constant..)  - used in most packages
+        'res/mipmap-mdpi/icon.png',                         // alternative name: 48x48 pixels                   - used in google or new packages
+        'res/drawable-mdpi/icon.png',                       // alternative name: 48x48 pixels (not constant..)  - used in most packages
+        'res/drawable-mdpi/app_icon.png',                   // alternative name: 48x48 pixels (not constant..)  - used in most packages
+        'res/drawable-mdpi-v0/ic_launcher_auto_media.png',  // 48x48 pixels                                     - used in packages that has version appended
+        'res/drawable-mdpi-v1/ic_launcher_auto_media.png',  // 48x48 pixels                                     - used in packages that has version appended
+        'res/drawable-mdpi-v2/ic_launcher_auto_media.png',  // 48x48 pixels                                     - used in packages that has version appended
+        'res/drawable-mdpi-v3/ic_launcher_auto_media.png',  // 48x48 pixels                                     - used in packages that has version appended
+        'res/drawable-mdpi-v4/ic_launcher_auto_media.png',  // 48x48 pixels                                     - used in packages that has version appended
+        'res/drawable-mdpi-v5/ic_launcher_auto_media.png',  // 48x48 pixels                                     - used in packages that has version appended
+        'res/drawable-mdpi-v0/ic_launcher_auto_messaging.png',  // 48x48 pixels         - used in custom-packages that has version appended
+        'res/drawable-mdpi-v1/ic_launcher_auto_messaging.png',  // 48x48 pixels         - used in custom-packages that has version appended
+        'res/drawable-mdpi-v2/ic_launcher_auto_messaging.png',  // 48x48 pixels         - used in custom-packages that has version appended
+        'res/drawable-mdpi-v3/ic_launcher_auto_messaging.png',  // 48x48 pixels         - used in custom-packages that has version appended
+        'res/drawable-mdpi-v4/ic_launcher_auto_messaging.png',  // 48x48 pixels         - used in custom-packages that has version appended
+        'res/drawable-mdpi-v5/ic_launcher_auto_messaging.png',  // 48x48 pixels         - used in custom-packages that has version appended
 
         'res/drawable-ldpi/ic_launcher.png',            // 36x36 pixels (not constant..)  - used in most packages
         'res/drawable-ldpi/icon.png',                   // alternative name: 36x36 pixels (not constant..)  - used in most packages
+        'res/drawable-ldpi/app_icon.png',               // alternative name: 36x36 pixels (not constant..)  - used in most packages
 
-        'res/drawable/ic_launcher.png',                 // 72x72 pixels || any (not constant..) - used in very old structure packages
-        'res/drawable/icon.png',                        // 72x72 pixels || any (not constant..) - used in very old structure packages
+        'res/drawable/ic_launcher.png',                  // 72x72 pixels || any (not constant..) - used in very old structure packages
+        'res/drawable/icon.png',                         // 72x72 pixels || any (not constant..) - used in very old structure packages
+        'res/drawable/app_icon.png'                      // 72x72 pixels || any (not constant..) - used in very old structure packages
+
+
       ];
+
 
       $images_data = [];
 

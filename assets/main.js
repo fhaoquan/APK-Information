@@ -26,13 +26,6 @@
     data = unzip(data);
 
     data = {'files': data}; //re-format the data, for easier HANDLEBARS management (mostly initial loop..)
-//
-//    $.get('index.mustache.php', {'small': true, 'zip': false}).done(function (template) {
-//      template = unzip(template);
-//      //$.jStorage.set("template", template);
-//
-//      template_handle.call(this, template.html, data);
-//    }); //done once..
 
     template = $.jStorage.get("template");
     if (!template) {
@@ -67,9 +60,11 @@
    * ----- at 'all_json.php' only files matches /^[a-f].*\.json$/i contents is being read..
    */
   function is_done_check(data) {
+    data = unzip(data);
+
     setTimeout(function () { //timeout helps preventing.. something...
 
-      if (true === unzip(data).is_all_have_json) {
+      if (true === data.is_all_have_json) {
         $.when(
           $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[a-c]'}),
           $.get('all_json.php', {'small': true, 'zip': false, 'prefix': '[d-f]'}),
@@ -109,8 +104,10 @@
   }
 
   function all_unprocessed_apks(data) {
+    data = unzip(data);
+
     //if all JSON files already generated the following will run 0 times.
-    $.each(unzip(data).packages_without_json, each_anlz); //each apk
+    $.each(data.packages_without_json, each_anlz); //each apk
 
     //so we can skip ahead and check "anyway", "if done?"
     is_done_check(data);
@@ -120,7 +117,7 @@
   (function () {
     $.get('list_apks.php', {
       'small': true,
-      'zip':   true
+      'zip':   false
     }).done(all_unprocessed_apks); //list_apks.php - packages_without_json
   }());
 

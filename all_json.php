@@ -26,15 +26,37 @@
 
   $file_ext = 'json';
   $files = files_in('./resources', '/^' . $prefix . '.*' . '\.' . $file_ext . '$/i');
+  $files_length = count($files);
 
+  //------------------- skip I/O if no change.
+  $pre_counter = './resources/_' . $prefix . '_count.txt';
+  $pre_prefix = './resources/_' . $prefix . '.json';
+  $is_unmodified = file_exists($pre_counter) && (@file_get_contents($pre_counter) === (string)$files_length) && file_exists($pre_prefix);
+  //------------------------------------------
 
   $response = '';
 
-  $len_files = count($files) - 1;
-  foreach ($files as $index => $file)
-    $response .= file_get_contents('./resources/' . $file) . ($len_files === $index ? '' : ','); //don't add ',' after last one.
+  if (true === $is_unmodified) {
+    //reading from cache
+    $response = @file_get_contents($pre_prefix);
+    $response = json_decode($response, true);
+    header('X-Used-Cache: true');
+  }
+  else {
+    foreach ($files as $index => $file)
+      $response .= @file_get_contents('./resources/' . $file) . ',';
 
-  $response = json_decode('[' . $response . ']', true); //only make it into a data-collection at the end, 'till now, its just a text (more efficient processing/appending..).
+    $response = (',' === mb_substr($response, -1)) ? mb_substr($response, 0, -1) : $response; //fix last char is ',' (invalid JSON text..)
+
+    //parse to data, since we *may* want to modify the output now..
+    $response = json_decode('[' . $response . ']', true);
+
+    //writing to cache
+    @file_put_contents($pre_counter, $files_length);
+    @file_put_contents($pre_prefix, toJSON($response, true));
+    header('X-Used-Cache: false');
+  }
+
 
   $response = toJSON($response, $is_small);
   $response = $is_zip ? toJSON(['zip' => base64_encode(gzencode($response))], $is_small) : $response; //optionally zip output.

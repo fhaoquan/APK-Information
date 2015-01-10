@@ -45,6 +45,8 @@ if (!isset($_SESSION['uniqueID'])) {
   <!--  <script src="assets/mustache.min.js"></script>-->
   <script src="assets/handlebars.min.js"></script>
   <script src="assets/handlebars_helpers.js"></script>
+  <script src="assets/jquery.lazyload.min.js"></script>
+
   <script src="assets/main.js"></script>
 </head>
 <body></body>

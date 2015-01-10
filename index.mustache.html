@@ -33,7 +33,9 @@
     <ul id="filelist" data-role="listview" data-filter="true" data-input="#myFilter" data-autodividers="true" data-inset="true">
       {{#files}}
       <li data-identification="{{name}} ({{filename}})">
-        <img class="package_logo" width="96" height="96" src="{{image_main.dirname}}/{{image_main.basename_escape}}"/>
+        <img class="package_logo lazy" width="96" height="96" data-original="{{image_main.dirname}}/{{image_main.basename_escape}}"/>
+        <noscript><img class="package_logo lazy" width="96" height="96" src="{{image_main.dirname}}/{{image_main.basename_escape}}"/></noscript>
+
 
         <div class="first">
           <span class="category_title">Package:</span>
@@ -183,7 +185,16 @@
 
       setTimeout(function () {
         document.querySelector('html').style.cssText = "";
+
+        setTimeout(function () {
+          $("img.lazy").lazyload({
+            effect: "fadeIn",
+            threshold : 200
+          });
+        }, 30);
+
       }, 30);
     }, 30);
   </script>
+
 </div>
