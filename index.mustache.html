@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css.css"/>
+
 <div data-role="page" id="pageone">
   <!--<div data-role="panel" id="myPanelDefault">-->
   <!--<h2>Panel Header</h2>-->
@@ -159,7 +161,6 @@
 
         </div>
       </li>
-      <br/>
       {{/files}}
     </ul>
 
@@ -171,7 +172,6 @@
   <!--</div>-->
   <!--</div>-->
 
-  <script src="assets/jquery.mobile-1.4.2.min.js"></script>
   <script>
     setTimeout(function () {
       $('#filelist')
@@ -188,7 +188,6 @@
 
         setTimeout(function () {
           $("img.lazy").lazyload({
-            effect: "fadeIn",
             threshold : 200
           });
         }, 30);

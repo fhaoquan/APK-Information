@@ -35,19 +35,8 @@ if (!isset($_SESSION['uniqueID'])) {
   <meta property="og:updated_time" content="2014-11-15T03:50:00+00:00"/>
   <title>apk.eladkarako.com</title>
 
-
-  <link rel="stylesheet" href="assets/jquery.mobile-1.4.2.min.css"/>
-  <link rel="stylesheet" href="assets/style.css"/>
-
-  <script src="assets/jsxcompressor.min.js"></script>
-  <script src="assets/jquery-1.10.2.min.js"></script>
-  <script src="assets/jstorage.min.js"></script>
-  <!--  <script src="assets/mustache.min.js"></script>-->
-  <script src="assets/handlebars.min.js"></script>
-  <script src="assets/handlebars_helpers.js"></script>
-  <script src="assets/jquery.lazyload.min.js"></script>
-
-  <script src="assets/main.js"></script>
+  <script defer="defer" src="assets/js.js"></script>
+  <script defer="defer" src="assets/main.js"></script>
 </head>
 <body></body>
 </html>
