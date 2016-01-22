@@ -184,3 +184,7 @@ I'll be using [Steve Pomeroy(xxv)](https://github.com/xxv)'s "24h Analog Clock",
 - The Data Can Be Processed From PHP (`json_decode`) and static-dashboard creation.
 - The Data Is Available For All JavaScript Playing, All You Have To Do Is Dump (Using PHP) A List Of JSON Files. 
 - *Enjoy*
+
+
+<br/>
+#Enjoy! 😉<sub>[☕](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=7994YX29444PA&lc=US&item_name=Elad%20Karako&item_number=stackoverflow%2dcoffee%2dicon&amount=0%2e50&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)</sub> &nbsp;
